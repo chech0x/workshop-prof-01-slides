@@ -49,14 +49,85 @@
 
 					</div>
 				</section>
-				<section data-background="#03BFC1">
-					<h2>Requisitos</h2>
-					<ul>
-						<li>Docker Instalado</li>
-						<li>Cygwin instalado con XWin y funcionando</li>
-						<li>Curso Platzi Docker</li>
-						<li>Curso Platzi Git</li>
-					</ul>
+				<section data-background="#00adad">
+					<section>
+						<h2>Requisitos</h2>
+						<ul>
+							<li>Docker Instalado</li>
+							<li>Cygwin instalado con XWin y funcionando</li>
+							<li>Curso Platzi Docker</li>
+							<li>Curso Platzi Git</li>
+						</ul>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							Debe estar habilitado en la **Bios del computador** las **caractaristícas de virtualizacion** (ej:**VTX**..)
+
+## Instalar Docker ToolBox
+* Descargar [Docker Toolbox](https://www.docker.com/products/docker-toolbox) y ejecutar
+
+
+						</script>
+
+
+
+					</section>
+					<section data-markdown><script type="text/template">## Instalar Cygwin con Xwin
+* Descargar [Cygwin](https://cygwin.com/install.html) (x86_64 si su S.O. es de 64bits) y ejecutar
+* Luego seleccionar: **Install from Internet**
+* Root Directory: **c:\cygwin64** , siguiente
+* Siguiente
+* En **Select Packages** asegurarse que esten seleccionados (install o keep) los siguiente packages:
+  * Los packages que comienzan con xorg en X11
+  * Los packages que comienzan con xwin en X11
+  * Los packages que comienzan con xterm en X11
+  * Los packages que comienzan con xinit
+  * Los packages de mintty
+* Dar click a siguiente.
+* Finalmente marcar las caillas: **Create icon on Desktop** y **Add Icon to Start Menu** , y luego finalizar.
+</script></section>
+
+					<section data-markdown><script type="text/template">
+## Levantar un servidor X
+
+* Abrir una terminal cygwin y levantar un servidor X:
+
+    ```bash
+    rm -f /var/log/xwin/XWin.0* \
+     && export CYGWIN=server \
+     && /usr/bin/XWin :0 -multiwindow -listen tcp -ac
+    ```
+* Esto levantará un servidor X en la $IP:0.0. Ejemplo: 192.168.10.18:0.0
+
+</script></section>
+					<section data-markdown><script type="text/template">## Terminal con soporte Docker
+* Ejecutar **Docker Quickstart Terminal**
+	* La primera vez correrá la configuración inicial.
+
+</script></section>
+					<section data-markdown><script type="text/template">
+### Configurar docker-machine para que soporte registry de kuvasz
+* En terminal **Docker Quickstart** ejecutar:
+    ```bash
+		docker-machine.exe ssh
+		```
+* Dentro de docker machine editar archivo **/var/lib/boot2docker/profile**:
+    ```bash
+    sudo vi /var/lib/boot2docker/profile
+    ```
+* Agregar línea de **insecure-registry** a EXTRA_ARGS, entre las comillas simples:
+    ```bash
+    EXTRA_ARGS='
+    --label provider=virtualbox
+    --insecure-registry docker-r01.kvz.local:5000
+    '
+    ```
+* Guardar, salir de docker-machine y reiniciarla:
+    ```bash
+    docker@default:~$ exit
+    PS ...> docker-machine restart
+    ```
+</script></section>
 				</section>
 				<!-- section data-markdown>
 				    <script type="text/template">
