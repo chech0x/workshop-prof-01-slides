@@ -145,26 +145,127 @@
 								* github: https://github.com/chech0x
 				    </script>
 				</section -->
-				<section data-transition="zoom-in convex-out" data-background="#AA1A24">
-					<h2>Agenda</h2>
-					<ul>
-						<li>Contenedor de Trabajo</li>
-						<li>Configurar el proyecto GIT</li>
-						<li>...</li>
-					</ul>
+				<section data-transition="zoom-in convex-out" data-background="#AA1A24" >
+					<section data-markdown>
+						<script type="text/template">
+##Agenda (1/2)
+* Imágenes Docker K-Labs
+ * Capas y MVC
+* Proyecto GitLab y GitHub
+* Running
+* CI con Jenkins
+* Mi primer Test
+ * Historias de Usuarios
+ * TDD
+* Principios de Desarrollo
+ * KISS, YAGNI, DRY, SOLID
+ * Comentarios
+						</script>
+					</section>
+					<section data-transition="zoom-in convex-out" data-background="#AA1A24" data-markdown>
+						<script type="text/template">
+##Agenda (2/2)
+* Agilidad
+ * Sprints
+ * Estimaciones
+* Contendor Backend Service
+ * 12 Factor Apps
+* Configuando Sails con MongoDB
+* Deploy en Talka
+* Wekan o ¿Gitlab Issues?
+* Documentando en la Wiki
+						</script>
+					</section>
 				</section>
-				<section data-transition="fade-in"  data-transition-speed="slow" data-background="#DB7825">
-					<h2>Contenedor</h2>
-					<pre><code data-trim data-noescape>
-sudo npm install --save-dev mocha <mark>--no-bin-links</mark>
-sudo npm install --save-dev chai --no-bin-links
-sudo npm install --save-dev sails-memory --no-bin-links
-					</code></pre>
-					<ul>
-						<li>bla bla bla</li>
-						<li>bla bla bla bla</li>
-						<li>...</li>
-					</ul>
+				<section data-transition="fade-in"  data-transition-speed="slow" data-background="#DB7825" >
+					<section data-markdown>
+						<script type="text/template">
+	<div style="display:flex">
+		<div  style="width:50%">
+			<img src="./images/containers-01.jpg" alt="Contenedores" style="height:20em;"/>
+		</div>
+		<div style="width:50%">
+
+	<h2> Imágenes Docker K-Labs</h2>
+	<h3> Docker Registry</h3>
+	Tenemos un Docker Registry funcionando en:<br/> **docker-r01.kvz.local:5000** <br/>en donde almacenamos nuestras imágenes K-Labs.<br/><br/>
+
+	<h4> Imagen Base Sails</h4>
+	Tenemos una imagen con soporte para Sails en :<br/> **docker-r01.kvz.local:5000/klabs/sails:v1.0**
+	<!--h3> Volumen</h3>
+	A data volume is a specially-designated directory within one or more containers that bypasses the Union File System. Data volumes provide several useful features for persistent or shared data
+		</div-->
+	</div>
+						</script>
+						<!-- h2>Contenedor</h2>
+						<pre><code data-trim data-noescape>
+	sudo npm install --save-dev mocha <mark>--no-bin-links</mark>
+	sudo npm install --save-dev chai --no-bin-links
+	sudo npm install --save-dev sails-memory --no-bin-links
+						</code></pre>
+						<ul>
+							<li>bla bla bla</li>
+							<li>bla bla bla bla</li>
+							<li>...</li>
+						</ul-->
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+## Volumen
+*A data volume is a specially-designated directory within one or more containers that bypasses the Union File System. Data volumes provide several useful features for **persistent or shared data** *
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+## Levantar mi primer container de desarrollo
+
+* Descargar set de [scripts de ayuda para el desarollo](http://git.kvz.local/talka/sailsDeveloper/repository/archive.zip?ref=master) y descomprimir.
+* Modificar **IP** dentro de scripts\common.cmd por la ip de la máquina actual
+
+ ```bash
+ set DOCKER_HOST_IP="192.168.10.X"
+ ```
+
+* En terminal de **Docker Quickstart** ejecutar
+
+ ```bash
+ PS C:\workdir\sailsDeveloper> .\scripts\common.cmd
+ ```
+* Esto abrirá el contendor de trabajo.
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+### Preparación de home con volumen
+* La primera vez (si queremos trabajar con un volumen nuestra carpeta /home/developer) debemos ejecutar la instrucción
+ ```bash
+ /opt/scripts/init.sh
+ ```
+ para que construya la estructura de directorios y copie los scripts de ayuda.
+ Sino deberemos ejecutar *.\scripts\common.cmd* comentando la última línea y descomentando la penúltima:
+ ```bash
+ docker run -ti --privileged --rm -p 1337:1337 --net=host \
+ -e DISPLAY=%DOCKER_HOST_IP%:%DISPLAY% -e LIBGL_DEBUG=verbose \
+ -e "TERM=linux" --name %CONTAINERNAME% %DOCKER_IMAGE%
+
+ REM docker run -ti --privileged --rm -p 1337:1337 --net=host \
+ -e DISPLAY=%DOCKER_HOST_IP%:%DISPLAY% -e LIBGL_DEBUG=verbose -e \
+  "TERM=linux" --name %CONTAINERNAME% -v /c/Users/%USERNAME%/developer:/home/developer  %DOCKER_IMAGE%
+ ```
+						</script>
+					</section>
+					<section data-markdown><script type="text/template">
+### Levantar atom dentro del contendor
+
+```bash
+t.atom
+```
+### Levantar eclipse dentro del contenedor
+
+```bash
+t.eclipse
+```
+					</script></section>
 				</section>
 				<section data-transition="zoom-in"  data-transition-speed="slow" data-background="#033242">
 					<h2>Configurar el Proyecto GIT</h2>
