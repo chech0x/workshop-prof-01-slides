@@ -267,14 +267,31 @@ t.atom
 t.eclipse
 ```
 					</script></section>
+
 				</section>
 				<section data-transition="zoom-in"  data-transition-speed="slow" data-background="#033242">
-					<h2>Configurar el Proyecto GIT</h2>
-					<ul>
-						<li>git bla bla bla</li>
-						<li>bla GIT bla bla bla</li>
-						<li>...</li>
-					</ul>
+					<section data-markdown>
+						<script type="text/template">
+## Iniciando Repositorios
+Dentro del contenedor de desarrollo
+* Cree un repositorio en github
+* Cree un repositorio en gitlab
+* Clone el repositorio talkaDemoSails:
+
+ ```bash
+  git clone http://git.kvz.local/talka/talkaDemoSails.git
+
+ ```
+* Elimine origin:
+ ```bash
+ git remote remove origin
+ ```
+* Agregue como origin su repositorio en gitlab
+ ```bash
+ git remote add origin [MiRepositorio]
+ ```
+						</script>
+					</section>
 				</section>
 				<section data-transition="concave-in"  data-transition-speed="slow" data-background="#578F27">
 					<h2>Otro</h2>
