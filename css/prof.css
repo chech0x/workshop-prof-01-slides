@@ -1,0 +1,4 @@
+.reveal section .noborder {
+  border: 0px none;
+  box-shadow: none;
+}

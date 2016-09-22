@@ -12,6 +12,8 @@
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
+		<link rel="stylesheet" href="css/prof.css">
+
 		<!-- Printing and PDF exports -->
 		<script>
 			var link = document.createElement( 'link' );
@@ -150,8 +152,8 @@
 						<script type="text/template">
 ##Agenda (1/2)
 * Imágenes Docker K-Labs
- * Capas y MVC
-* Proyecto GitLab y GitHub
+* Sails, Capas y MVC
+* Proyecto con GitLab y GitHub
 * Running
 * CI con Jenkins
 * Mi primer Test
@@ -177,12 +179,12 @@
 						</script>
 					</section>
 				</section>
-				<section data-transition="fade-in"  data-transition-speed="slow" data-background="#DB7825" >
+				<section data-transition="fade-in convex-out"  data-transition-speed="slow" data-background="#DB7825" >
 					<section data-markdown>
 						<script type="text/template">
 	<div style="display:flex">
-		<div  style="width:50%">
-			<img src="./images/containers-01.jpg" alt="Contenedores" style="height:20em;"/>
+		<div  style="width:70%;">
+			<img data-src="./images/containers-01.jpg" alt="Contenedores" style="height:20em;"/>
 		</div>
 		<div style="width:50%">
 
@@ -209,6 +211,24 @@
 							<li>...</li>
 						</ul-->
 					</section>
+					<section>
+						<h2>klabs/sails-developer</h2><br/>
+						<div style="display:flex;" >
+							<div style="width:50%;background-color:#ffe197;height:500px">
+								<img data-src="images/imagenes-sails.png" class="noborder" style="width:100%;" alt="extension de imágenes"/><br/>
+
+								<ul style="color: #666666;">
+									<li>FROM: klabs/sails:v1.0</li>
+									<li>+atom</li>
+									<li>+jdk</li>
+									<li>+eclipse neon</li>
+								</ul>
+							</div>
+							<div style="width:50%;background-image:url(images/development.png); background-position:center center;background-size: 105%;background-repeat: no-repeat; background-color:#ffa185">
+							</div>
+
+						</div>
+					</section>
 					<section data-markdown>
 						<script type="text/template">
 ## Volumen
@@ -216,6 +236,7 @@
 <small>[(Manage data in containers, docs.docker.com)](https://docs.docker.com/engine/tutorials/dockervolumes/)</small>
 						</script>
 					</section>
+
 					<section data-markdown>
 						<script type="text/template">
 ## Levantar mi primer container de desarrollo
@@ -269,18 +290,45 @@ t.eclipse
 					</script></section>
 
 				</section>
+				<section  data-transition="convex-in" style="color:black;" data-background="#FFFFFF">
+						<section>
+
+
+							<h2 style="color:#41B3D5">Sails, Capas y MVC</h2>
+							<div style="display:flex" >
+								<div style="width:50%;">
+									<img data-src="images/bkgd_squiddy.png" width="100%" alt="sails logo" class="noborder"/>
+								</div>
+								<div style="width:50%;">
+									<img data-src="images/sails-logo_ltBg_ltBlue.png" width="100%" alt="sails logo" class="noborder"/>
+								</div>
+							</div>
+
+						</section>
+						<section>
+							<span style="color:#41B3D5"><strong>Sails</strong> es alaldsaflkadsjfljdaskljfasdljfadskjf
+								<br/><br/>
+								basjdfjsdlfjasdljflas<br/><br/>
+								sdflkjasldfjlajdsl
+
+							</span>
+						</section>
+				</section>
 				<section data-transition="zoom-in"  data-transition-speed="slow" data-background="#033242">
+					<section data-markdown>
+	<script type="text/template">
+##Proyecto con GitLab y GitHub
+	</script>
+</section>
 					<section data-markdown>
 						<script type="text/template">
 ## Iniciando Repositorios
-Dentro del contenedor de desarrollo
+<small>Dentro del contenedor de desarrollo</small>
 * Cree un repositorio en github
 * Cree un repositorio en gitlab
 * Clone el repositorio talkaDemoSails:
-
  ```bash
   git clone http://git.kvz.local/talka/talkaDemoSails.git
-
  ```
 * Elimine origin:
  ```bash
@@ -288,8 +336,32 @@ Dentro del contenedor de desarrollo
  ```
 * Agregue como origin su repositorio en gitlab
  ```bash
- git remote add origin [MiRepositorio]
+ git remote add origin [MiRepositorioGitLab]
  ```
+* Agregue a origin push ambos repositorios
+ ```bash
+ git remote set-url --add --push origin [MiRepositorioGitLab]
+ git remote set-url --add --push origin [MiRepositorioGithub]
+ ```
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+## Iniciando Repositorios
+* Verificar
+ ```bash
+ git remote -v
+ ```
+* Subir los cambios a los nuevos repositorios
+```
+ git push origin master
+```
+ * Si el cambio
+	</script>
+</section>
+					<section data-markdown>
+						<script type="text/template">
+
 						</script>
 					</section>
 				</section>
