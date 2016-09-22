@@ -276,7 +276,8 @@
 
  REM docker run -ti --privileged --rm -p 1337:1337 --net=host \
  -e DISPLAY=%DOCKER_HOST_IP%:%DISPLAY% -e LIBGL_DEBUG=verbose -e \
-  "TERM=linux" --name %CONTAINERNAME% -v /c/Users/%USERNAME%/developer:/home/developer  %DOCKER_IMAGE%
+  "TERM=linux" --name %CONTAINERNAME% \
+	-v /c/Users/%USERNAME%/developer:/home/developer  %DOCKER_IMAGE%
  ```
 						</script>
 					</section>
