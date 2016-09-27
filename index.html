@@ -489,13 +489,90 @@ t.eclipse
 				</section>
 
 				<section data-transition="concave-in"  data-transition-speed="slow" data-background="#578F27">
-					<h2>Otro</h2>
-					<ul>
-						<li>otro bla bla bla</li>
-						<li>bla Otro bla bla bla</li>
-						<li>...</li>
-					</ul>
+					<section>
+						<h2>Corriendo el Proyecto por Primera Vez</h2>
+	<img data-src="images/running_transparent.png" alt="Ejecutando el Proyecto en Sails" class="noborder"/>
+					</section>
+					<section data-markdown>
+<script type="text/template">
+### Mapeo de Puertos
+#### Docker
+* Debemos indicar a docker que puertos mapear, en el caso de nuestro script **scripts/common.cmd** lo mapeamos con **p 1337:1337**
+ ```bash
+ docker run -ti --privileged --rm -p 1337:1337 -e DISPLAY=%DOCKER_HOST_IP%:%DISPLAY% ...
+ ```
+* Si el contendor está corriedo podemos ver los puertos que expone con
+ ``` bash
+ docker ps
+
+ CONTAINER ID        ... PORTS                    NAMES
+ 3e6d0058260a        ... 0.0.0.0:1337->1337/tcp   sails-dev
+ ```
+
+</script>
+					</section>
+					<section data-markdown>
+<script type="text/template">
+### Mapeo de Puertos
+#### VirtualBox
+
+* Si no estamos en un host linux debermos **redireccionar puertos via nat** en **virtualbox**.
+![Reenvio de Puertos](images/reenvio_puertos_vb.png)
+ * Esto es en la máquina virtual asignada a la docker-machine (normalmente llamada **default**)
+
+</script>
+					</section>
+					<section>
+						<h3>Mapeo de Puertos</h3>
+						<h4>Firewall</h4>
+						Si queremos acceder al puerto a través de la ip de la red local debemos abrirlo en el firewall.
+						<div style="display:flex">
+							<div style="width:50%">
+								<img data-src="images/open_firewall_1.png" alt="apertura de puertos"/>
+							</div>
+							<div style="width:50%">
+								<img data-src="images/open_firewall_2.png" alt="apertura de puertos"/>
+							</div>
+						</div>
+					</section>
+					<section data-markdown>
+<script type="text/template">
+## Ejecutar Aplicación
+* Desde dentro del contenedor entramos al directorio de la aplicación y ejecutamos **sails lift**
+
+``` bash
+bash-4.2$ cd workdir/talkaDemoSails/
+bash-4.2$ sails lift
+
+info: Starting app...
+info:
+info:                .-..-.
+info:
+info:    Sails              <|    .-..-.
+info:    v0.12.4             |\
+info:                       /|.\
+info:                      / || \
+info:                    ,'  |'  \
+info:                 .-'.-==|/_--'
+info:                 `--'-------'
+info:    __---___--___---___--___---___--___
+info:  ____---___--___---___--___---___--___-__
+info:
+info: Server lifted in `/home/developer/workdir/talkaDemoSails`
+info: To see your app, visit http://localhost:1337
+info: To shut down Sails, press <CTRL> + C at any time.
+
+debug: -------------------------------------------------------
+debug: :: Tue Sep 27 2016 22:16:46 GMT+0000 (UTC)
+
+debug: Environment : development
+debug: Port        : 1337
+debug: -------------------------------------------------------
+```
+</script>
+					</section>
 				</section>
+
 			</div>
 		</div>
 
