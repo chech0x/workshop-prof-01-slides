@@ -311,7 +311,7 @@ t.eclipse
 
 						</section>
 						<section>
-							<div style="    width: 100%;
+							<div style="width: 100%;
     height: 5em;
     background-color: #41B3D5;
     color: #244954;
@@ -336,6 +336,33 @@ t.eclipse
 								</ul>
 								<a href="http://sailsjs.org/" target="_ext_sails"><small>http://sailsjs.org/</small></a>
 							</span>
+						</section>
+						<section >
+
+								<span style="color: #3cb7dc;">
+										<h3 style="color: #3cb7dc;">Patrón MVC (model-view-controller)</h3>
+										Es un <strong>Patrón de Arquitectura</strong><br/><br/>
+										<div style="display:flex">
+											<div style="width:50%">
+												<ul>
+													<li><strong>Martin Fowler</strong> lo clasifica como un patrón de <strong>Presentación Separada</strong>.<br/>
+														<ul>
+															<li>Aisla el comportamiento visual de la lógica del dominio y de la fuente de datos</li>
+														</ul>
+													<li>
+														La presentación (Vista) no conoce referencias del modelo
+													</li>
+													<li>El modelo mantiene la lógica de del dominio de la aplicación (reglas de negocio)</li>
+
+												</ul>
+											</div>
+											<div style="width:50%">
+												<ul><li>El controlador accede al modelo vía comandos y actualiza la vista con las respuestas de este.</li></ul>
+												<img data-src="images/mvc_flow.png" class="noborder" alt="flujo tradicional de MVC"/>
+												<small>* en el caso de que todo ejecute en el mismo ambiente (ej: browser), se suele usar <strong>doble binding</strong></small>
+											</div>
+										</div>
+								</span>
 						</section>
 				</section>
 				<section data-transition="zoom-in"  data-transition-speed="slow" data-background="#033242">
