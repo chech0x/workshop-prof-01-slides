@@ -270,15 +270,17 @@
  para que construya la estructura de directorios y copie los scripts de ayuda.
  Sino deberemos ejecutar *.\scripts\common.cmd* comentando la última línea y descomentando la penúltima:
  ```bash
- docker run -ti --privileged --rm -p 1337:1337 --net=host \
- -e DISPLAY=%DOCKER_HOST_IP%:%DISPLAY% -e LIBGL_DEBUG=verbose \
- -e "TERM=linux" --name %CONTAINERNAME% %DOCKER_IMAGE%
+ docker run -ti --privileged --rm -p 1337:1337 --net=host ^
+ -e DISPLAY=%DOCKER_HOST_IP%:%DISPLAY% ^
+ -e LIBGL_DEBUG=verbose -e "TERM=linux" --name %CONTAINERNAME% %DOCKER_IMAGE%
 
- REM docker run -ti --privileged --rm -p 1337:1337 --net=host \
- -e DISPLAY=%DOCKER_HOST_IP%:%DISPLAY% -e LIBGL_DEBUG=verbose -e \
-  "TERM=linux" --name %CONTAINERNAME% \
-	-v /c/Users/%USERNAME%/developer:/home/developer  %DOCKER_IMAGE%
+ REM docker run -ti --privileged --rm -p 1337:1337 --net=host ^
+ REM  -e DISPLAY=%DOCKER_HOST_IP%:%DISPLAY% ^
+ REM  -e LIBGL_DEBUG=verbose -e "TERM=linux" --name %CONTAINERNAME% ^
+ REM  -v /c/Users/%USERNAME%/developer/.atom:/home/developer/.atom ^
+ REM  -v /c/Users/%USERNAME%/developer/workdir:/home/developer/workdir  %DOCKER_IMAGE%
  ```
+ (El símbolo **^** se utiliza en Windows para especificar que un comando continúa en la línea siguiente)
 						</script>
 					</section>
 					<section data-markdown><script type="text/template">
@@ -543,11 +545,8 @@ t.eclipse
 ``` bash
 bash-4.2$ cd workdir/talkaDemoSails/
 bash-4.2$ sails lift
-
 info: Starting app...
-info:
 info:                .-..-.
-info:
 info:    Sails              <|    .-..-.
 info:    v0.12.4             |\
 info:                       /|.\
@@ -557,19 +556,38 @@ info:                 .-'.-==|/_--'
 info:                 `--'-------'
 info:    __---___--___---___--___---___--___
 info:  ____---___--___---___--___---___--___-__
-info:
 info: Server lifted in `/home/developer/workdir/talkaDemoSails`
 info: To see your app, visit http://localhost:1337
 info: To shut down Sails, press <CTRL> + C at any time.
-
 debug: -------------------------------------------------------
 debug: :: Tue Sep 27 2016 22:16:46 GMT+0000 (UTC)
-
 debug: Environment : development
 debug: Port        : 1337
 debug: -------------------------------------------------------
 ```
 </script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+<h3 style="    margin-top: -1em;"> Navegar Aplicación dentro del Contenedor</h3>
+Cuando inicializamos sails la terminal queda tomada, por lo que debemos atachar una nueva terminal al contenedor.
+1. Necesitamos abrir un **Docker Quickstart Terminal nuevo**.
+2. Revisamos el nombre o el id del contenedor (por defecto trae nombre sails-dev) y nos atachamos al contenedor de la siguiente forma:
+  ```bash
+  docker ps
+  $ docker ps
+  CONTAINER ID        IMAGE  ...  COMMAND         ... NAMES
+  3e6d0058260a        docker-...  "/bin/bash -l"  ... sails-dev
+  $ docker exec -ti sails-dev bash -l
+  ```
+  * <small>-l en el comando bash hace que cargue los comandos que se encuentran en el .bash_profile del contendor (carga alguna funciones de ayuda).</small>
+3. Dentro del contenedor ejecutamos
+  ```bash
+  t.chrome http://localhost:1337
+  ```
+
+
+						</script>
 					</section>
 				</section>
 
