@@ -590,6 +590,18 @@ Cuando inicializamos sails la terminal queda tomada, por lo que debemos atachar 
 
 						</script>
 					</section>
+					<section data-markdown>
+						<script type="text/template">
+							<h3 style="    margin-top: -1em;"> Navegar Aplicación fuera del Contenedor</h3>
+* Podemos abrir la url apuntando a la **ip de la docker-machine**. Para averiguarla, desde un Docker Quickstart terminal
+```bash
+$ docker-machine ip
+192.168.99.100
+```
+* Luego abrimos un navegador en nuestro escritorio apuntando a dicha ip y el puerto 1337
+* Podemos también abrir el navegador apuntando a la ip de la máquina host con el puerto 1337, pero para ello necesitamos haber **abierto los puertos en NAT de virtualbox y en el firewal**.
+						</script>
+					</section>
 				</section>
 
 			</div>
