@@ -540,10 +540,11 @@ t.eclipse
 					<section data-markdown>
 <script type="text/template">
 ## Ejecutar Aplicación
-* Desde dentro del contenedor entramos al directorio de la aplicación y ejecutamos **sails lift**
-
+* Desde dentro del contenedor entramos al directorio de la aplicación, cargamos las dependencias y ejecutamos **sails lift**
+  * Cargar las dependencias del proyecto (con --no-bin-links para que no hayan conflictos entre volumen y links simbólicos)
 ``` bash
 bash-4.2$ cd workdir/talkaDemoSails/
+bash-4.2$ npm install --no-bin-links
 bash-4.2$ sails lift
 info: Starting app...
 info:                .-..-.
