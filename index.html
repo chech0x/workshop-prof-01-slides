@@ -541,7 +541,7 @@ t.eclipse
 <script type="text/template">
 ## Ejecutar Aplicación
 * Desde dentro del contenedor entramos al directorio de la aplicación, cargamos las dependencias y ejecutamos **sails lift**
-  * Cargar las dependencias del proyecto (con --no-bin-links para que no hayan conflictos entre volumen y links simbólicos)
+  * <small>Las dependencias sólo se cargan la primera vez después de clonar el proyecto (con **--no-bin-links** para que no hayan conflictos entre volumen y links simbólicos)</small>
 ``` bash
 bash-4.2$ cd workdir/talkaDemoSails/
 bash-4.2$ npm install --no-bin-links
