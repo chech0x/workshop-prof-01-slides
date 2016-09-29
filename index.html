@@ -655,6 +655,41 @@ suma(2,-1) se espera 1
 * Refactor : Mejoramos el diseño en un modo seguro.
 						</script>
 					</section>
+					<section data-markdown>
+						<script type="text/template">
+### Ahora en Práctica
+#### App: To Do List
+* Post-its (8 minutos)
+  * Título: &lt;Funcionalidad&gt;
+  * Ejemplos (Tests de Aceptación ¿?)
+* Agrupar las que se solapen o parezcan
+
+<img data-src="images/postit-amarillo.png" alt="Post-it" class="noborder"/>
+
+						</script>
+					</section>
+					<section >
+
+<h3 style="margin-top:-1em;"> Ahora en { Código }</h3>
+<div style="display:flex">
+	<div style="width:50%">
+		Dentro del contenedor instalar mocha, chai, y <strong>sails-memory</strong> <small> (--save-dev modificará el archivo package.json)</small>
+		<pre><code data-trim data-noescape>
+npm install --save-dev mocha --no-bin-links
+npm install --save-dev chai --no-bin-links
+npm install --save-dev sails-memory --no-bin-links
+		</code></pre>
+		Editar el archivo <strong>models.js</strong> dentro de &lt;proyecto&gt;<strong>/config</strong> descomentando la línea
+		<pre><code data-trim data-noescape>
+		migrate:'alter'
+		</code></pre>
+	</div>
+	<div style="width:50%">
+		Luego de esto podemos generar nuevos controllers y models (o modificarlos), sin que de problemas para subir la aplicación. <small>Esta característica no es recomendable en producción</small>
+		<img data-src="images/sourcecode.png" alt="Post-it" style="height:8em" class="noborder"/>
+	</div>
+</div>
+					</section>
 
 				</section>
 			</div>
