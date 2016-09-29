@@ -603,7 +603,60 @@ $ docker-machine ip
 						</script>
 					</section>
 				</section>
+				<section data-background="#00adad">
+					<section data-markdown>
+						<script type="text/template">
+## Mi primer test
+<small>Técnicas para un buen desarrollo</small>
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+### TDD (Test Driven Development)
 
+Características:
+* Una herramienta de diseño
+* La calidad de software aumenta
+* Produce **Código altamente reutilizable**
+* Enfoque en el problema a solucionar, no en la tecnología.
+* Desambiguación de espectativas.
+  * 1 Caso de Uso -> X Ejemplos (tests)
+```javascript
+suma(1,2) se espera 2
+suma(-1,-1) se espera 0
+suma(-2,1) se epera 1
+suma(1,-2) se espera 1
+suma(2,-1) se espera 1
+```
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+<h3 style="margin-top:-1em"> Algoritmo TDD</h3>
+* Fail: declaramos las expectativas en código
+  ```java
+		public void sumarAmbosPositivosSeEsperaPositivo(){
+			Calculadora calculadora = new Calculadora();
+			assertEquals(2,calculadora.suma(1,1));
+		}
+	```
+	* Sólo se crean las firmas de métodos, y nos aseguramos que falle en ejecución.
+	```java
+		public int suma(int a,int b){
+		    throw new RuntimeException("Método no implentado");
+		}
+	```
+* Success: Implementamos hasta que el test pase, nada más (y que no fallen los test anteriores).
+	```java
+		public suma(int a,int b){
+		    return 2; //:D
+		}
+	```
+* Refactor : Mejoramos el diseño en un modo seguro.
+						</script>
+					</section>
+
+				</section>
 			</div>
 		</div>
 
