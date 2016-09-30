@@ -267,12 +267,12 @@ PS ...> docker-machine.exe  restart  && eval $("docker-machine.exe" env)
 					<section data-markdown>
 						<script type="text/template">
 ### Preparación de home con volumen
-* La primera vez (si queremos trabajar con un volumen nuestra carpeta /home/developer) debemos ejecutar la instrucción
- ```bash
- /opt/scripts/init.sh
- ```
- para que construya la estructura de directorios y copie los scripts de ayuda.
- Sino deberemos ejecutar *.\scripts\common.cmd* comentando la última línea y descomentando la penúltima:
+La primera vez (si queremos trabajar con un volumen nuestra carpeta /home/developer) debemos ejecutar la instrucción
+```bash
+/opt/scripts/init.sh
+```
+para que construya la estructura de directorios y copie los scripts de ayuda.
+Sino deberemos ejecutar *.\scripts\common.cmd* comentando la última línea y descomentando la penúltima:
  ```bash
  docker run -ti --privileged --rm -p 1337:1337 --net=host ^
  -e DISPLAY=%DOCKER_HOST_IP%:%DISPLAY% ^
@@ -284,7 +284,7 @@ PS ...> docker-machine.exe  restart  && eval $("docker-machine.exe" env)
  REM  -v /c/Users/%USERNAME%/developer/.atom:/home/developer/.atom ^
  REM  -v /c/Users/%USERNAME%/developer/workdir:/home/developer/workdir  %DOCKER_IMAGE%
  ```
- (El símbolo **^** se utiliza en Windows para especificar que un comando continúa en la línea siguiente)
+ <small>(El símbolo **^** se utiliza en Windows para especificar que un comando continúa en la línea siguiente)</small>
 						</script>
 					</section>
 					<section data-markdown><script type="text/template">
