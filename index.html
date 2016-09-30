@@ -128,10 +128,11 @@
 </script></section>
 <section data-markdown><script type="text/template">
 * Guardar, salir de docker-machine y reiniciarla:
-    ```bash
-    docker@default:~$ exit
-    PS ...> docker-machine.exe  restart  && eval $("docker-machine.exe" env)
-    ```
+
+```bash
+docker@default:~$ exit
+PS ...> docker-machine.exe  restart  && eval $("docker-machine.exe" env)
+```
 
 </script></section>
 				</section>
@@ -190,10 +191,11 @@
 		<div  style="width:70%;">
 			<img data-src="./images/containers-01.jpg" alt="Contenedores" style="height:20em;"/>
 		</div>
-		<div style="width:50%">
+		<div style="width:50%" class="aligned">
 
 	<h2> Imágenes Docker K-Labs</h2>
 	<h3> Docker Registry</h3>
+
 	Tenemos un Docker Registry funcionando en:<br/> **docker-r01.kvz.local:5000** <br/>en donde almacenamos nuestras imágenes K-Labs.<br/><br/>
 
 	<h4> Imagen Base Sails</h4>
@@ -236,7 +238,9 @@
 					<section data-markdown>
 						<script type="text/template">
 ## Volumen
+<p class="aligned">
 *A data volume is a specially-designated directory within one or more containers that bypasses the Union File System. Data volumes provide several useful features for **persistent or shared data** *
+</p>
 <small>[(Manage data in containers, docs.docker.com)](https://docs.docker.com/engine/tutorials/dockervolumes/)</small>
 						</script>
 					</section>
@@ -303,10 +307,10 @@ t.eclipse
 
 							<h2 style="color:#41B3D5">Sails, Capas y MVC</h2>
 							<div style="display:flex" >
-								<div style="width:50%;">
+								<div class="lefthalf">
 									<img data-src="images/bkgd_squiddy.png" width="100%" alt="sails logo" class="noborder"/>
 								</div>
-								<div style="width:50%;">
+								<div class="righthalf">
 									<img data-src="images/sails-logo_ltBg_ltBlue.png" width="100%" alt="sails logo" class="noborder"/>
 								</div>
 							</div>
@@ -341,12 +345,15 @@ t.eclipse
 							</span>
 						</section>
 						<section >
+								<div>
+									<span style="color: #3cb7dc;">
+											<h3 style="color: #3cb7dc;">Patrón MVC (model-view-controller)</h3>
+											Es un <strong>Patrón de Arquitectura</strong><br/><br/>
+									</span>
+								</div>
+								<div style="display:flex;color: #3cb7dc;">
 
-								<span style="color: #3cb7dc;">
-										<h3 style="color: #3cb7dc;">Patrón MVC (model-view-controller)</h3>
-										Es un <strong>Patrón de Arquitectura</strong><br/><br/>
-										<div style="display:flex">
-											<div style="width:50%">
+											<div class="lefthalf">
 												<ul>
 													<li><strong>Martin Fowler</strong> lo clasifica como un patrón de <strong>Presentación Separada</strong>.<br/>
 														<ul>
@@ -359,19 +366,22 @@ t.eclipse
 
 												</ul>
 											</div>
-											<div style="width:50%">
-												<ul><li>El controlador accede al modelo vía comandos y actualiza la vista con las respuestas de este.</li></ul>
-												<img data-src="images/mvc_flow.png" class="noborder" alt="flujo tradicional de MVC"/>
+											<div class="righthalf" >
+												<ul>
+													<li>El controlador accede al modelo vía comandos y actualiza la vista con las respuestas de este.</li>
+												</ul>
+												<img data-src="images/mvc_flow.png" width="100%" class="noborder" alt="flujo tradicional de MVC"/>
 												<small>* en el caso de que todo ejecute en el mismo ambiente (ej: browser), se suele usar <strong>doble binding</strong></small>
 											</div>
-										</div>
-								</span>
+
+							</div>
+
 						</section>
 						<section>
 							<span style="color: #3cb7dc;">
 								<h3 style="color: #3cb7dc;">Layering / n-Capas </h3>
 								<div style="display:flex;">
-									<div style="width:50%">
+									<div class="lefthalf">
 										<ul>
 											<li>Nace con las Arquitecturas cliente-servidor.</li>
 											<li>Las funciones de presentación, dominio y adminstración datos están <strong>separadas físicamente</strong></li>
@@ -380,7 +390,7 @@ t.eclipse
 											<li>Ajusta ámbito en donde se realizan los cambios, aun cuando afecte varias capas, <strong>es más fácil enfocarse en una a la vez</strong></li>
 										</ul>
 									</div>
-									<div style="width:50%">
+									<div class="righthalf">
 										<ul>
 											<li>La división puede ser a nivel de bibliotecas y/o servicios, pero no es mandatorio</li>
 											<li>Modularizar por capas sólo es útil en aplicaciones pequeñas.</li>
@@ -461,7 +471,7 @@ t.eclipse
 <h3 style="margin-top: -1em; margin-bottom: 0em;">README.md</h3>
 <a href="ttps://guides.github.com/features/mastering-markdown/" target="_extMarkdown">Formato Markdown</a>
 <div style="display:flex">
-	<div style="width:50%">
+	<div class="lefthalf">
 		<ul>
 			<li>Título</li>
 			<li>Descripción del Proyecto</li>
@@ -471,7 +481,7 @@ t.eclipse
 			<li>Testing</li>
 		</ul>
 	</div>
-	<div style="width:50%">
+	<div class="righthalf">
 		<ul>
 			<li>Uso</li>
 			<li>Features / plugins</li>
@@ -515,10 +525,11 @@ t.eclipse
 					</section>
 					<section data-markdown>
 <script type="text/template">
-### Mapeo de Puertos
+<h3 style="margin-top:-1em;">Mapeo de Puertos</h3>
 #### VirtualBox
 
 * Si no estamos en un host linux debermos **redireccionar puertos via nat** en **virtualbox**.
+
 ![Reenvio de Puertos](images/reenvio_puertos_vb.png)
  * Esto es en la máquina virtual asignada a la docker-machine (normalmente llamada **default**)
 
@@ -529,10 +540,10 @@ t.eclipse
 						<h4>Firewall</h4>
 						Si queremos acceder al puerto a través de la ip de la red local debemos abrirlo en el firewall.
 						<div style="display:flex">
-							<div style="width:50%">
+							<div class="lefthalf">
 								<img data-src="images/open_firewall_1.png" alt="apertura de puertos"/>
 							</div>
-							<div style="width:50%">
+							<div class="righthalf">
 								<img data-src="images/open_firewall_2.png" alt="apertura de puertos"/>
 							</div>
 						</div>
@@ -670,9 +681,9 @@ suma(2,-1) se espera 1
 					</section>
 					<section >
 
-<h3 style="margin-top:-1em;"> Ahora en { Código }</h3>
+<h3 style="margin-top:-1em;"> Ahora en { Código } (1/3)</h3>
 <div style="display:flex">
-	<div style="width:50%">
+	<div class="lefthalf">
 		Dentro del contenedor instalar mocha, chai, y <strong>sails-memory</strong> <small> (--save-dev modificará el archivo package.json)</small>
 		<pre><code data-trim data-noescape>
 npm install --save-dev mocha --no-bin-links
@@ -684,10 +695,35 @@ npm install --save-dev sails-memory --no-bin-links
 		migrate:'alter'
 		</code></pre>
 	</div>
-	<div style="width:50%">
+
+	<div class="righthalf">
 		Luego de esto podemos generar nuevos controllers y models (o modificarlos), sin que de problemas para subir la aplicación. <small>Esta característica no es recomendable en producción</small>
 		<img data-src="images/sourcecode.png" alt="Post-it" style="height:8em" class="noborder"/>
 	</div>
+</div>
+					</section>
+					<section >
+
+<h3 style="margin-top:-1em;"> Ahora en { Código } (2/3)</h3><br/>
+<div style="display:flex">
+	<div class="aligned lefthalf">
+Editar el archivo <strong>connections.js</strong> dentro de &lt;proyecto&gt;<strong>/config</strong> agregándo la configuración de base de datos <strong>memory</strong> a continuación de la configuración de <strong>localDiskDb</strong>, dentro de <strong>module.exports.connection</strong>
+<img data-src="images/sourcecode.png" alt="Post-it" style="height:8em" class="noborder"/>
+
+	</div>
+	<div class="righthalf">
+		<pre><code data-trim data-noescape>
+localDiskDb: {
+  adapter: 'sails-disk'
+},
+
+memory: {
+  adapter: 'sails-memory'
+},
+		</code></pre>
+
+		............. continuar con: "Estructura de directorio para testing"
+		</div>
 </div>
 					</section>
 
@@ -703,6 +739,8 @@ npm install --save-dev sails-memory --no-bin-links
 			Reveal.initialize({
 				history: true,
 				slideNumber: 'c/t',
+				width: 1024,
+				height: 700, //576
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [

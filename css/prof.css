@@ -3,3 +3,22 @@
   box-shadow: none;
   background: rgba(255, 255, 255, 0);
 }
+
+.reveal section li{
+  text-align: justify;
+  text-justify: inter-word;
+}
+.reveal div .lefthalf{
+  width:50%;margin-right:0.2em;
+  max-width: 50%;
+}
+.reveal div .righthalf{
+  width:50%;margin-left:0.2em;
+}
+.righthalf img{
+  text-align: center;
+}
+.aligned {
+  text-align: justify;
+  text-justify: inter-word;
+}
