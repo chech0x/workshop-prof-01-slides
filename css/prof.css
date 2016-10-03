@@ -9,11 +9,11 @@
   text-justify: inter-word;
 }
 .reveal div .lefthalf{
-  width:50%;margin-right:0.2em;
+  width:50%;margin-right:0.5em;
   max-width: 50%;
 }
 .reveal div .righthalf{
-  width:50%;margin-left:0.2em;
+  width:50%;margin-left:0.5em;
 }
 .righthalf img{
   text-align: center;
