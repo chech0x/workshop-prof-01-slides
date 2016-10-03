@@ -899,29 +899,68 @@ after(function(done){
 						</script>
 					</section>
 					<section data-markdown>
+						<script type="text/markdown">
+## Uso de Servicios para aislar la lógica de negocio.
+* Para **aislar** el **comportamiento de negocio** del comportamiento de **flujo de navegación** (controllers)	nos ayudaremos de **servicios** (que son objetos helpers).
+* De esta forma será más fácil testear la aplicación sin tener que realizar peticiones http por cada funcionalidad que queremos probar.
+
+						</script>
+					</section>
+					<section data-markdown data-separator-notes="^Note:">
+						<script type="text/markdown">
+### TaskService.js
+* Debemos crear una carpeta **services** dentro de **api/ **.
+  * Dentro creamos un archivo que termine en **Service.js** (inyección convensión) , en este caso **TaskService.js** .
+```javascript
+// api/services/TaskService.js
+module.exports = {
+		/**
+		* Establece una tarea como terminada
+		*/
+		finishTask: function(taskId,callback){
+			Task.update({id:taskId},{done:true}).exec(function(err, updated){
+				if(err){
+					callback();
+				}
+				callback(updated);
+				return;
+			});
+		}
+}
+```
+Note: Luego deberíamos agregar una excepción si se quiere terminar dos veces una misma tarea.
+throw new Error('Esta tarea ya fue terminada');
+						</script>
+					</section>
+
+					<section data-markdown data-separator="^\n\n\n" data-separator-vertical="^\n\n" data-separator-notes="^Note:">
 						<script type="text/template">
-#### TaskListController.test.js
+#### TaskService.test.js
 * En **test/integration/controllers/** creamos nuestros archivos **.test.js**. Por ejemplo:
 
 ```javascript
 /*
-Archivo ./test/integration/controllers/TaskListController.test.js
+Archivo ./test/integration/controllers/TaskService.test.js
 */
 var chai = require('chai');
 var expect = chai.expect;
 
-describe('Una TaskList',function(){
-  describe('creada',function(){
-    it('deberia tener 0 tareas al crear una lista de tareas', function(done){
-     TaskList.create({name:"Mi Lista"}).exec(function(err,taskList){
-        expect(taskList).to.have.property('tasks').with.length(0);
-        done();
-      });
-    });
-  });
+describe('Una Task',function(){
+	describe('finalizada',function(){
+		it('debería tener done true', function(done){
+			Task.create({description:"Ingresar una nueva tarea"}).exec(function(err,task){
+				TaskService.finishTask(task.id,function(finishedTask){
+					expect(finishedTask[0]).to.have.property('done').to.be.true;
+					done();
+				});
+			});
+		});
+	});
 });
 
 ```
+
+
 						</script>
 					</section>
 					<section data-markdown>
@@ -943,7 +982,7 @@ Para lanzar los tests se debe entrar al directorio del proyecto y ejecutar :
 ```bash
 npm test
 ```
-Para este caso los test fallarán porque **no se encuentran creados los modelos ni los controladores de TaskList**.
+
 						</script>
 					</section>
 					<section data-markdown>
