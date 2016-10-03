@@ -918,16 +918,18 @@ module.exports = {
 		* Establece una tarea como terminada
 		*/
 		finishTask: function(taskId,callback){
-			Task.update({id:taskId},{done:true}).exec(function(err, updated){
+			throw Error("Funcion finishTask no ha sido implementada");
+			/*Task.update({id:taskId},{done:true}).exec(function(err, updated){
 				if(err){
 					callback();
 				}
 				callback(updated);
 				return;
-			});
+			});*/
 		}
 }
 ```
+* Primero nuestro test **debe fallar**. Luego lo hacemos pasar (descomentado el código correcto);
 Note: Luego deberíamos agregar una excepción si se quiere terminar dos veces una misma tarea.
 throw new Error('Esta tarea ya fue terminada');
 						</script>
