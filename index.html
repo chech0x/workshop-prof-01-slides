@@ -172,10 +172,11 @@ PS ...> docker-machine.exe  restart  && eval $("docker-machine.exe" env)
 * Sails, Capas y MVC
 * Proyecto con GitLab y GitHub
 * Running del Projecto y Prueba del API REST
-* CI con Jenkins
 * Mi primer Test
- * Historias de Usuarios
- * TDD
+  * TDD
+	* Historias de Usuarios
+	* Uso de Servicios para lógica de negocio
+* CI con Jenkins
 * Principios de Desarrollo
  * KISS, YAGNI, DRY, SOLID
  * Comentarios
@@ -187,9 +188,9 @@ PS ...> docker-machine.exe  restart  && eval $("docker-machine.exe" env)
 * Agilidad
  * Sprints
  * Estimaciones
-* Contendor Backend Service
+* Contenedor Backend Service
  * 12 Factor Apps
-* Configuando Sails con MongoDB
+* Configurando Sails con MongoDB
 * Deploy en Talka
 * Wekan o ¿Gitlab Issues?
 * Documentando en la Wiki
@@ -935,7 +936,7 @@ throw new Error('Esta tarea ya fue terminada');
 						</script>
 					</section>
 
-					<section data-markdown data-separator="^\n\n\n" data-separator-vertical="^\n\n" data-separator-notes="^Note:">
+					<section data-markdown>
 						<script type="text/template">
 #### TaskService.test.js
 * En **test/integration/controllers/** creamos nuestros archivos **.test.js**. Por ejemplo:
@@ -959,10 +960,7 @@ describe('Una Task',function(){
 		});
 	});
 });
-
 ```
-
-
 						</script>
 					</section>
 					<section data-markdown>
