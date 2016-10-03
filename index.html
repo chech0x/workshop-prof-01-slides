@@ -143,7 +143,7 @@ PS ...> docker-machine.exe  restart  && eval $("docker-machine.exe" env)
 * Cliquear en **Más Herramientas**
 * Cliquear en **Extensiones**
 * Si no tiene instalado **Advanced REST client** cliquear la opción **Obtener más extensiones**
-* Buscar **Advanced REST client** , instalarlo y asegurarse que cree un acceso directo en el escritorio para facilitar el acceso. 
+* Buscar **Advanced REST client** , instalarlo y asegurarse que cree un acceso directo en el escritorio para facilitar el acceso.
 					</script>
 
 				</section>
@@ -171,7 +171,7 @@ PS ...> docker-machine.exe  restart  && eval $("docker-machine.exe" env)
 * Imágenes Docker K-Labs
 * Sails, Capas y MVC
 * Proyecto con GitLab y GitHub
-* Running
+* Running del Projecto y Prueba del API REST
 * CI con Jenkins
 * Mi primer Test
  * Historias de Usuarios
@@ -625,6 +625,108 @@ $ docker-machine ip
 * Podemos también abrir el navegador apuntando a la ip de la máquina host con el puerto 1337, pero para ello necesitamos haber **abierto los puertos en NAT de virtualbox y en el firewal**.
 						</script>
 					</section>
+					<section data-markdown>
+						<script type="text/template">
+## REST (Represantional State Transfer)
+* Es un estilo de **arquitectura orientada a servicios** que reutiliza la especificación del protocolo **HTTP** como tal, descansando en su suficiencia y completitud.
+* Reutiliza los verbos principales de sus métodos: POST, PUT, GET, DELETE, para definir las funciones básicas de CRUD (Create, Read, Update, Delete).
+* Normalmente utiliza la serialización JSON (Javascript Object Notation) que es liviana, legibile y con un gran soporte por la mayoría de los lenguajes y plataformas.
+## SOA != SOAP
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+## Sails Blueprints
+* Es una característica que permite hacer scaffolding del modelo. Viene habilitada por defecto.
+* **Scaffolding = Andamiaje**. Técnica de construir la estructura básica de una aplicación (CRUD) por defecto a través del framework.
+  * Al generar un api en sails este genera el modelo y el controlador de una entidad exponiendolo como un servicio **RESTful JSon**.
+* Modelado: [Atributos](http://sailsjs.org/documentation/concepts/models-and-orm/attributes), [Relaciones](http://sailsjs.org/documentation/concepts/models-and-orm/associations).
+
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+## Sails Blueprints [Práctica]
+* Habilitar el alter en el modelo para que regenere el schema de base de datos cada vez que probemos nuestras modificaciones (sólo en desarrollor)
+  * Editar el archivo &lt;proyecto&gt;**/config/models.js** descomentando la línea:
+```json
+migrate:'alter'
+```
+* Generamos el API de una entidad llamada **Task** (que generará model y controller):
+```bash
+bash-4.2$ sails generate api Task
+info: Created a new api!
+```
+* Editar &lt;projecto&gt;**/api/models/Task.js**
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+* Agregamos un par de atributos.
+
+```javascript
+/**
+ * Task.js
+ *
+ * @description :: TODO: You might write a short summary of how this model works and what it represents here.
+ * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
+ */
+
+module.exports = {
+
+	attributes: {
+	description: {
+		type: 'string',
+		size: 140
+	},
+	done: {
+		type: 'boolean',
+		defaultsTo: false
+	}
+	}
+};
+```
+* Waterline agrega por defecto un atributo id.
+* Levantamos la applicacióno nuevamente con:
+```bash
+sails lift
+```
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+### Probamos con Advanced Rest Client [1/2]
+* Abrimos **Advanced REST Client**
+  * Request: http://&lt;MiIP&gt;:1337/task/
+  * Método: POST
+  * content type: application/json
+  * Raw Payload:
+```json
+    { "description": "Hola mundo", "done": false}
+```
+  * Send
+* Revise la respuesta
+
+				</script>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+### Probamos con Advanced Rest Client [2/2]
+* Ahora hacer la misma peticion pero con el **verbo GET**.
+* Ahora hacer la misma peticion verbo GET pero **agregar a la url  /1**
+* Ahora hacer la misma peticion pero con el **verbo PUT** (url terminada en /1) y **cambiar el payload**
+```json
+{ "done": true}
+```
+* Ahora hacer la misma peticion pero con el **verbo GET** (url terminada en /1)
+* Ahora hacer la misma peticion pero con el **verbo DELETE** (url terminada en /1)
+* Ahora hacer la petición con url **/task solamente y el verbo GET**
+
+
+			</script>
+		</section>
 				</section>
 				<section data-background="#00adad">
 					<section data-markdown>
