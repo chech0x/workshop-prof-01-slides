@@ -681,7 +681,7 @@ suma(2,-1) se espera 1
 					</section>
 					<section >
 
-<h3 style="margin-top:-1em;"> Ahora en { Código } (1/3)</h3>
+<h3 style="margin-top:-1em;"> Dependencias de testing </h3>
 <div style="display:flex">
 	<div class="lefthalf">
 		Dentro del contenedor instalar mocha, chai, y <strong>sails-memory</strong> <small> (--save-dev modificará el archivo package.json)</small>
@@ -704,14 +704,14 @@ npm install --save-dev sails-memory --no-bin-links
 					</section>
 					<section >
 
-<h3 style="margin-top:-1em;"> Ahora en { Código } (2/3)</h3><br/>
+<h3 style="margin-top:-1em;">Persistencia en memoria para testing</h3><br/>
 <div style="display:flex">
 	<div class="aligned lefthalf">
-Editar el archivo <strong>connections.js</strong> dentro de &lt;proyecto&gt;<strong>/config</strong> agregándo la configuración de base de datos <strong>memory</strong> a continuación de la configuración de <strong>localDiskDb</strong>, dentro de <strong>module.exports.connection</strong>
-<img data-src="images/sourcecode.png" alt="Post-it" style="height:8em" class="noborder"/>
+<img data-src="images/sourcecode.png" alt="Post-it" style="height:10em" class="noborder"/>
 
 	</div>
 	<div class="righthalf">
+		Editar el archivo <strong>connections.js</strong> dentro de &lt;proyecto&gt;<strong>/config</strong> agregándo la configuración de base de datos <strong>memory</strong> a continuación de la configuración de <strong>localDiskDb</strong>, dentro de <strong>module.exports.connection</strong>
 		<pre><code data-trim data-noescape>
 localDiskDb: {
   adapter: 'sails-disk'
@@ -722,11 +722,127 @@ memory: {
 },
 		</code></pre>
 
-		............. continuar con: "Estructura de directorio para testing"
 		</div>
 </div>
 					</section>
+					<section data-markdown>
+						<script type="text/template">
+<h3 style="margin-top:-1em;"> Estructura de directorio para testing </h3><br/>
+Debemos crear una estructura de directorios dentro del directorio del proyecto como:
+* test/
+  * integration/
+	  *	controllers/
+  *	bootstrap.test.js
+  * mocha.opts
 
+En **bootstrap.test.js** definimos la configuración de **arranque y bajada** (pre y pos tests respectivamente).
+
+Es importante la configuración de **models** con **connection: 'memory'**, para no contaminar el ambiente de datos del servidor.
+
+Ademas del **puerto distinto** al puerto por defecto par evitar conflictos
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+####bootstrap.test.js
+```javascript
+var sails = require('sails');
+before(function(done){
+  // Se levanta sails antes de ejecutar los tests
+  sails.lift({
+    log: {
+      level: 'info',
+    },
+    models: { migrate: 'alter', connection: 'memory' },
+    port: 1338
+  },function(err, server){
+      if(err) {
+        console.log('sails no levantado')
+        return done(err);
+      }
+      console.log('Sails levantado en puerto', server.config.port);
+      done(err,sails);
+  });
+});
+
+after(function(done){
+  //se baja sails después de ejecutar los testss
+  sails.lower(done);
+});
+```
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+#### mocha.opts
+* En **mocha.opts** definimos la configuración para mocha, por ejemplo: el tiempo de espera máximo que debe tardar el ciclo de pruebas , incluyendo el levantmiento del servidor sails (sails lift).
+
+```bash
+--timeout 30s
+```
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+#### TaskListController.test.js
+* En **test/integration/controllers/** creamos nuestros archivos **.test.js**. Por ejemplo:
+
+```javascript
+/*
+Archivo ./test/integration/controllers/TaskListController.test.js
+*/
+var chai = require('chai');
+var expect = chai.expect;
+
+describe('Una TaskList',function(){
+  describe('creada',function(){
+    it('deberia tener 0 tareas al crear una lista de tareas', function(done){
+     TaskList.create({name:"Mi Lista"}).exec(function(err,taskList){
+        expect(taskList).to.have.property('tasks').with.length(0);
+        done();
+      });
+    });
+  });
+});
+
+```
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+### Script de ejecución de test
+Se debe agregar al archivo package.json la línea correspondiente a test:
+
+```json
+"scripts": {
+  "debug": "node debug app.js",
+  "start": "node app.js",
+  "test": "node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/integration/**/*.test.js"
+},
+```
+
+### Ejecución de tests
+Para lanzar los tests se debe entrar al directorio del proyecto y ejecutar :
+
+```bash
+npm test
+```
+Para este caso los test fallarán porque **no se encuentran creados los modelos ni los controladores de TaskList**.
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+### Ahora en el { código }
+<img data-src="images/postit-amarillo.png" alt="Post-it" style="height:8em" class="noborder"/>&nbsp;&nbsp;&nbsp;&nbsp;<img data-src="images/sourcecode.png" alt="source code" style="height:8em" class="noborder"/>
+
+Iteremos en nuestros **tests**:
+* Fail
+* Success
+* Refactor
+						</script>
+					</section>
 				</section>
 			</div>
 		</div>
