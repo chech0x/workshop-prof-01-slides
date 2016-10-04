@@ -26,7 +26,7 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>
+				<section data-background="#111111">
 
 					<h2 >Profesionalización.workshop()</h2>
 					<!-- h3 style="text-align: left;">while(true){mejora()}</h3 -->
@@ -52,7 +52,7 @@
 					</div>
 				</section>
 				<section data-background="#00adad">
-					<section>
+					<section data-background="#00adad">
 						<h2>Requisitos</h2>
 						<ul>
 							<li>Docker Instalado</li>
@@ -62,7 +62,7 @@
 							<li>Cliente REST (extensión chrome <strong>Advanced REST client</strong>)</li>
 						</ul>
 					</section>
-					<section data-markdown>
+					<section data-markdown data-background="#00adad">
 						<script type="text/template">
 							Debe estar habilitado en la **Bios del computador** las **caractaristícas de virtualizacion** (ej:**VTX**..)
 
@@ -75,7 +75,7 @@
 
 
 					</section>
-					<section data-markdown><script type="text/template">## Instalar Cygwin con Xwin
+					<section data-markdown data-background="#00adad"><script type="text/template">## Instalar Cygwin con Xwin
 * Descargar [Cygwin](https://cygwin.com/install.html) (x86_64 si su S.O. es de 64bits) y ejecutar
 * Luego seleccionar: **Install from Internet**
 * Root Directory: **c:\cygwin64** , siguiente
@@ -90,7 +90,7 @@
 * Finalmente marcar las caillas: **Create icon on Desktop** y **Add Icon to Start Menu** , y luego finalizar.
 </script></section>
 
-					<section data-markdown><script type="text/template">
+					<section data-markdown data-background="#00adad"><script type="text/template">
 ## Levantar un servidor X
 
 * Abrir una terminal cygwin y levantar un servidor X:
@@ -103,12 +103,12 @@
 * Esto levantará un servidor X en la $IP:0.0. Ejemplo: 192.168.10.18:0.0
 
 </script></section>
-					<section data-markdown><script type="text/template">## Terminal con soporte Docker
+					<section data-markdown data-background="#00adad"><script type="text/template">## Terminal con soporte Docker
 * Ejecutar **Docker Quickstart Terminal**
 	* La primera vez correrá la configuración inicial.
 
 </script></section>
-					<section data-markdown><script type="text/template">
+					<section data-markdown data-background="#00adad"><script type="text/template">
 ### Configurar docker-machine para que soporte registry de kuvasz
 * En terminal **Docker Quickstart** ejecutar:
     ```bash
@@ -127,7 +127,7 @@
     ```
 ...
 </script></section>
-<section data-markdown><script type="text/template">
+<section data-markdown data-background="#00adad"><script type="text/template">
 * Guardar, salir de docker-machine y reiniciarla:
 
 ```bash
@@ -136,7 +136,7 @@ PS ...> docker-machine.exe  restart  && eval $("docker-machine.exe" env)
 ```
 
 </script></section>
-				<section data-markdown>
+				<section data-markdown data-background="#00adad">
 					<script type="text/template">
 ### Advanced REST Client
 * Ir a la pestaña de **Personaliza y Controla Google Chrome** (ícono de tres puntos verticales)
@@ -165,7 +165,7 @@ PS ...> docker-machine.exe  restart  && eval $("docker-machine.exe" env)
 				    </script>
 				</section -->
 				<section data-transition="zoom-in convex-out" data-background="#AA1A24" >
-					<section data-markdown>
+					<section data-markdown data-background="#AA1A24">
 						<script type="text/template">
 ##Agenda (1/2)
 * Imágenes Docker K-Labs
@@ -198,7 +198,7 @@ PS ...> docker-machine.exe  restart  && eval $("docker-machine.exe" env)
 					</section>
 				</section>
 				<section data-transition="fade-in convex-out"  data-transition-speed="slow" data-background="#DB7825" >
-					<section data-markdown>
+					<section data-markdown data-background="#DB7825">
 						<script type="text/template">
 	<div style="display:flex">
 		<div  style="width:70%;">
@@ -230,7 +230,7 @@ PS ...> docker-machine.exe  restart  && eval $("docker-machine.exe" env)
 							<li>...</li>
 						</ul-->
 					</section>
-					<section>
+					<section data-background="#DB7825">
 						<h2>klabs/sails-developer</h2><br/>
 						<div style="display:flex;" >
 							<div style="width:50%;background-color:#ffe197;height:500px">
@@ -248,7 +248,7 @@ PS ...> docker-machine.exe  restart  && eval $("docker-machine.exe" env)
 
 						</div>
 					</section>
-					<section data-markdown>
+					<section data-markdown data-background="#DB7825">
 						<script type="text/template">
 ## Volumen
 <p class="aligned">
@@ -258,7 +258,7 @@ PS ...> docker-machine.exe  restart  && eval $("docker-machine.exe" env)
 						</script>
 					</section>
 
-					<section data-markdown>
+					<section data-markdown data-background="#DB7825">
 						<script type="text/template">
 ## Levantar mi primer container de desarrollo
 
@@ -277,7 +277,7 @@ PS ...> docker-machine.exe  restart  && eval $("docker-machine.exe" env)
 * Esto abrirá el contendor de trabajo.
 						</script>
 					</section>
-					<section data-markdown>
+					<section data-markdown data-background="#DB7825">
 						<script type="text/template">
 ### Preparación de home con volumen
 La primera vez (si queremos trabajar con un volumen nuestra carpeta /home/developer) debemos ejecutar la instrucción
@@ -300,7 +300,7 @@ Sino deberemos ejecutar *.\scripts\common.cmd* comentando la última línea y de
  <small>(El símbolo **^** se utiliza en Windows para especificar que un comando continúa en la línea siguiente)</small>
 						</script>
 					</section>
-					<section data-markdown><script type="text/template">
+					<section data-markdown data-background="#DB7825"><script type="text/template">
 ### Levantar atom dentro del contendor
 
 ```bash
@@ -315,7 +315,7 @@ t.eclipse
 
 				</section>
 				<section  data-transition="convex-in" style="color:black;" data-background="#FFFFFF">
-						<section>
+						<section data-background="#FFFFFF">
 
 
 							<h2 style="color:#41B3D5">Sails, Capas y MVC</h2>
@@ -329,7 +329,7 @@ t.eclipse
 							</div>
 
 						</section>
-						<section>
+						<section data-background="#FFFFFF">
 							<div style="width: 100%;
     height: 4.5em;
     background-color: #41B3D5;
@@ -357,7 +357,7 @@ t.eclipse
 								<a href="http://sailsjs.org/" target="_ext_sails"><small>http://sailsjs.org/</small></a>
 							</span>
 						</section>
-						<section >
+						<section data-background="#FFFFFF">
 								<div>
 									<span style="color: #3cb7dc;">
 											<h3 style="color: #3cb7dc;">Patrón MVC (model-view-controller)</h3>
@@ -390,7 +390,7 @@ t.eclipse
 							</div>
 
 						</section>
-						<section>
+						<section data-background="#FFFFFF">
 							<span style="color: #3cb7dc;">
 								<h3 style="color: #3cb7dc;">Layering / n-Capas </h3>
 								<div style="display:flex;">
@@ -421,7 +421,7 @@ t.eclipse
 ##Proyecto con GitLab y GitHub
 	</script>
 </section>
-					<section data-markdown>
+					<section data-markdown data-background="#033242">
 						<script type="text/template">
 ## Iniciando Repositorios
 <small>Dentro del contenedor de desarrollo</small>
@@ -446,7 +446,7 @@ t.eclipse
  ```
 						</script>
 					</section>
-					<section data-markdown>
+					<section data-markdown data-background="#033242">
 						<script type="text/template">
 ## Iniciando Repositorios
 * Verificar
@@ -460,28 +460,28 @@ t.eclipse
  * Si el cambio fue subido sin problemas, la configuación está correcta.
 	</script>
 </section>
-				<section data-markdown>
+				<section data-markdown data-background="#033242">
 						<script type="text/template">
 ## Documentación Profesional
 						</script>
 					</section>
 
-				<section data-markdown>
+				<section data-markdown data-background="#033242">
 						<script type="text/template">
 ### Descripción del proyecto
 ![descripcion gitlab](images/gitlab_descripcion.png)
 						</script>
 					</section>
 
-					<section data-markdown>
+					<section data-markdown data-background="#033242">
 							<script type="text/template">
 ### Descripción del proyecto
 * Los tags de descripción (**keywords**) son importantes para poder encontrar el proyecto cuando se está navegando.
 * En **github** también se puede agregar la **url del proyecto**.
 							</script>
 						</section>
-						<section>
-<h3 style="margin-top: -1em; margin-bottom: 0em;">README.md</h3>
+						<section data-background="#033242">
+<h3 >README.md</h3>
 <a href="ttps://guides.github.com/features/mastering-markdown/" target="_extMarkdown">Formato Markdown</a>
 <div style="display:flex">
 	<div class="lefthalf">
@@ -518,7 +518,7 @@ t.eclipse
 						<h2>Corriendo el Proyecto por Primera Vez</h2>
 	<img data-src="images/running_transparent.png" alt="Ejecutando el Proyecto en Sails" class="noborder"/>
 					</section>
-					<section data-markdown>
+					<section data-markdown data-background="#578F27">
 <script type="text/template">
 ### Mapeo de Puertos
 #### Docker
@@ -536,7 +536,7 @@ t.eclipse
 
 </script>
 					</section>
-					<section data-markdown>
+					<section data-markdown data-background="#578F27">
 <script type="text/template">
 <h3 style="margin-top:-1em;">Mapeo de Puertos</h3>
 #### VirtualBox
@@ -548,7 +548,7 @@ t.eclipse
 
 </script>
 					</section>
-					<section>
+					<section data-background="#578F27">
 						<h3>Mapeo de Puertos</h3>
 						<h4>Firewall</h4>
 						Si queremos acceder al puerto a través de la ip de la red local debemos abrirlo en el firewall.
@@ -561,7 +561,7 @@ t.eclipse
 							</div>
 						</div>
 					</section>
-					<section data-markdown>
+					<section data-markdown data-background="#578F27">
 <script type="text/template">
 ## Ejecutar Aplicación
 * Desde dentro del contenedor entramos al directorio de la aplicación, cargamos las dependencias y ejecutamos **sails lift**
@@ -592,7 +592,7 @@ debug: -------------------------------------------------------
 ```
 </script>
 					</section>
-					<section data-markdown>
+					<section data-markdown data-background="#578F27">
 						<script type="text/template">
 <h3 style="    margin-top: -1em;"> Navegar Aplicación dentro del Contenedor</h3>
 Cuando inicializamos sails la terminal queda tomada, por lo que debemos atachar una nueva terminal al contenedor.
@@ -614,7 +614,7 @@ Cuando inicializamos sails la terminal queda tomada, por lo que debemos atachar 
 
 						</script>
 					</section>
-					<section data-markdown>
+					<section data-markdown data-background="#578F27">
 						<script type="text/template">
 							<h3 style="    margin-top: -1em;"> Navegar Aplicación fuera del Contenedor</h3>
 * Podemos abrir la url apuntando a la **ip de la docker-machine**. Para averiguarla, desde un Docker Quickstart terminal
@@ -626,7 +626,7 @@ $ docker-machine ip
 * Podemos también abrir el navegador apuntando a la ip de la máquina host con el puerto 1337, pero para ello necesitamos haber **abierto los puertos en NAT de virtualbox y en el firewal**.
 						</script>
 					</section>
-					<section data-markdown>
+					<section data-markdown data-background="#578F27">
 						<script type="text/template">
 ## REST (Represantional State Transfer)
 * Es un estilo de **arquitectura orientada a servicios** que reutiliza la especificación del protocolo **HTTP** como tal, descansando en su suficiencia y completitud.
@@ -636,7 +636,7 @@ $ docker-machine ip
 
 						</script>
 					</section>
-					<section data-markdown>
+					<section data-markdown data-background="#578F27">
 						<script type="text/template">
 ## Sails Blueprints
 * Es una característica que permite hacer scaffolding del modelo. Viene habilitada por defecto.
@@ -647,7 +647,7 @@ $ docker-machine ip
 
 						</script>
 					</section>
-					<section data-markdown>
+					<section data-markdown data-background="#578F27">
 						<script type="text/template">
 ## Sails Blueprints [Práctica]
 * Habilitar el alter en el modelo para que regenere el schema de base de datos cada vez que probemos nuestras modificaciones (sólo en desarrollor)
@@ -663,7 +663,7 @@ info: Created a new api!
 * Editar &lt;projecto&gt;**/api/models/Task.js**
 						</script>
 					</section>
-					<section data-markdown>
+					<section data-markdown data-background="#578F27">
 						<script type="text/template">
 * Agregamos un par de atributos.
 
@@ -696,7 +696,7 @@ sails lift
 ```
 					</script>
 				</section>
-				<section data-markdown>
+				<section data-markdown data-background="#578F27">
 					<script type="text/template">
 ### Probamos con Advanced Rest Client [1/2]
 * Abrimos **Advanced REST Client**
@@ -712,7 +712,7 @@ sails lift
 
 				</script>
 			</section>
-			<section data-markdown>
+			<section data-markdown data-background="#578F27">
 				<script type="text/template">
 ### Probamos con Advanced Rest Client [2/2]
 * Ahora hacer la misma peticion pero con el **verbo GET**.
@@ -730,13 +730,13 @@ sails lift
 		</section>
 				</section>
 				<section data-background="#00adad">
-					<section data-markdown>
+					<section data-markdown data-background="#00adad">
 						<script type="text/template">
 ## Mi primer test
 <small>Técnicas para un buen desarrollo</small>
 						</script>
 					</section>
-					<section data-markdown>
+					<section data-markdown data-background="#00adad">
 						<script type="text/template">
 ### TDD (Test Driven Development)
 
@@ -756,7 +756,7 @@ suma(2,-1) se espera 1
 ```
 						</script>
 					</section>
-					<section data-markdown>
+					<section data-markdown data-background="#00adad">
 						<script type="text/template">
 <h3 style="margin-top:-1em"> Algoritmo TDD</h3>
 * Fail: declaramos las expectativas en código
@@ -781,7 +781,7 @@ suma(2,-1) se espera 1
 * Refactor : Mejoramos el diseño en un modo seguro.
 						</script>
 					</section>
-					<section data-markdown>
+					<section data-markdown data-background="#00adad">
 						<script type="text/template">
 ### Ahora en Práctica
 #### App: To Do List
@@ -794,7 +794,7 @@ suma(2,-1) se espera 1
 
 						</script>
 					</section>
-					<section >
+					<section data-background="#00adad">
 
 <h3 style="margin-top:-1em;"> Dependencias de testing </h3>
 <div style="display:flex">
@@ -817,7 +817,7 @@ npm install --save-dev sails-memory --no-bin-links
 	</div>
 </div>
 					</section>
-					<section >
+					<section data-background="#00adad">
 
 <h3 style="margin-top:-1em;">Persistencia en memoria para testing</h3><br/>
 <div style="display:flex">
@@ -840,7 +840,7 @@ memory: {
 		</div>
 </div>
 					</section>
-					<section data-markdown>
+					<section data-markdown data-background="#00adad">
 						<script type="text/template">
 <h3 style="margin-top:-1em;"> Estructura de directorio para testing </h3><br/>
 Debemos crear una estructura de directorios dentro del directorio del proyecto como:
@@ -858,7 +858,7 @@ Ademas del **puerto distinto** al puerto por defecto par evitar conflictos
 
 						</script>
 					</section>
-					<section data-markdown>
+					<section data-markdown data-background="#00adad">
 						<script type="text/template">
 ####bootstrap.test.js
 ```javascript
@@ -888,7 +888,7 @@ after(function(done){
 ```
 						</script>
 					</section>
-					<section data-markdown>
+					<section data-markdown data-background="#00adad">
 						<script type="text/template">
 #### mocha.opts
 * En **mocha.opts** definimos la configuración para mocha, por ejemplo: el tiempo de espera máximo que debe tardar el ciclo de pruebas , incluyendo el levantmiento del servidor sails (sails lift).
@@ -899,7 +899,7 @@ after(function(done){
 
 						</script>
 					</section>
-					<section data-markdown>
+					<section data-markdown data-background="#00adad">
 						<script type="text/markdown">
 ## Uso de Servicios para aislar la lógica de negocio.
 * Para **aislar** el **comportamiento de negocio** del comportamiento de **flujo de navegación** (controllers)	nos ayudaremos de **servicios** (que son objetos helpers).
@@ -907,7 +907,7 @@ after(function(done){
 
 						</script>
 					</section>
-					<section data-markdown data-separator-notes="^Note:">
+					<section data-markdown data-separator-notes="^Note:" data-background="#00adad">
 						<script type="text/markdown">
 ### TaskService.js
 * Debemos crear una carpeta **services** dentro de **api/ **.
@@ -936,7 +936,7 @@ throw new Error('Esta tarea ya fue terminada');
 						</script>
 					</section>
 
-					<section data-markdown>
+					<section data-markdown data-background="#00adad">
 						<script type="text/template">
 #### TaskService.test.js
 * En **test/integration/controllers/** creamos nuestros archivos **.test.js**. Por ejemplo:
@@ -963,7 +963,7 @@ describe('Una Task',function(){
 ```
 						</script>
 					</section>
-					<section data-markdown>
+					<section data-markdown data-background="#00adad">
 						<script type="text/template">
 ### Script de ejecución de test
 Se debe agregar al archivo package.json la línea correspondiente a test:
@@ -985,7 +985,7 @@ npm test
 
 						</script>
 					</section>
-					<section data-markdown>
+					<section data-markdown data-background="#00adad">
 						<script type="text/template">
 ### Ahora en el { código }
 <img data-src="images/postit-amarillo.png" alt="Post-it" style="height:8em" class="noborder"/>&nbsp;&nbsp;&nbsp;&nbsp;<img data-src="images/sourcecode.png" alt="source code" style="height:8em" class="noborder"/>
