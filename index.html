@@ -502,6 +502,7 @@ t.eclipse
 			<li>Screenshots</li>
 			<li>Proyecto Kanban (Trello/Wekan)</li>
 			<li>Colaboradores / Equipo			</li>
+			<li>Licencia</li>
 		</ul>
 	</div>
 
@@ -1003,10 +1004,119 @@ Iteremos en nuestros **tests**:
 						<img style="height:6em;" data-src="images/jenkins-logo.png" class="noborder" />
 					</section>
 					<section data-background="#033242">
-						<h2>bla bla bla bla bla</h2>
-						<img style="height:6em;" data-src="images/jenkins-logo.png" class="noborder" />
+						<h3 style="margin-top:-1em;">Nuestro nuevo proyecto en Jenkins</h3>
+
+						<div style="display:flex;">
+							<div class="lefthalf">
+								<ol>
+									<li>New Item </li><small>(Nueva Tarea)</small>
+									<li>Enter a new item name</li>
+									<ul>
+										<li><small style="vertical-align: middle;"><strong>toDoDemo</strong>&lt;miUsuario&gt;</small></li>
+									</ul>
+									<li>Freestyle project </li><small>(Crear un proyecto de estilo libre)</small>
+									<li>Ok</li>
+									<li>GitLab connection</li>
+									<ul>
+										<li>KuvaszGit</li>
+									</ul>
+									<li>Source Code Management</li><small>(Configurar el origen del código fuente)</small>
+									<ul>
+										<li>Git</li>
+										<li>Repository URL<li>
+										<ul>
+											<li>http://git.kvz.local/.....git</li>
+										</ul>
+										<li>Branch Specifier</li>
+										<ul>
+											<li>*/master</li>
+										</ul>
+									</ul>
+								</ol>
+							</div>
+							<div class="righthalf">
+								<ol start="7">
+
+									<li>Build </li><small>(Ejecutar)</small>
+									<ol type="i" style="list-style-type: lower-roman;">
+										<li>Add build step </li><small>(añadir un nuevo paso)</small>
+										<ul><li>Execute Shell</li><small>(Ejecutar linea de comandos (shell))</small></ul>
+										<li>Execute Shell</li><small>(Ejecutar linea de comandos (shell))</small>
+										<ul>
+											<li>Command</li><small>(Comando)</small>
+											<pre><code data-trim data-noescape>
+npm install
+npm test
+											</code></pre>
+										</ul>
+									</ol>
+									<li>Save</li><small>(Guardar)</small>
+
+								</ol>
+
+							</div>
+
+						</div>
+
 					</section>
-				<section>
+					<section data-background="#033242">
+						<h3>El primer build</h3>
+						<img data-src="images/jenkins-buildnow.png" alt="Accionar el botón de build" class="noborder"/>
+						<ul>
+							<li>¿Cuál fue la salida del build #1?</li><small>Console Output (Salida de consola)</small>
+							<li>¿Cuál es su estado?</li>
+						</ul>
+					</section>
+					<section data-background="#033242">
+						<h3>Probar lo contrario</h3>
+						<ul>
+							<li>Modifiquemos el comportamiento de TaskService</li>
+							<li>Suba los cambios a su repositorio</li>
+							<li>Haga un nuevo build del proyecto</li>
+						</ul>
+					</section>
+					<section data-background="#033242">
+						<h3>Agregar el reporte al build</h3>
+						<ul>
+							<li>en package.json, en el script de test modificar</li>
+								<ul><li>agregar -R xunit</li>
+									<li>agregar --reporter-options output=test-reports.xml</li>
+								</ul>
+							<pre><code data-trim data-noescape>
+node ./node_modules/mocha/bin/mocha -R xunit --reporter-options output=test-reports.xml test/bootstrap.test.js test/integration/**/*.test.js
+							</code></pre>
+							<li>Agregamos el nombre del archivo de reporte al .gitignore</li>
+							<li>Agregamos un  post build action en el job jenkins</li><small>(Acciones para ejecutar después.)</small>
+								<ul>
+									<li>Publish JUnit test result report</li>
+									<ul><li>Test report XMLs</li></ul>
+									<pre><code data-trim data-noescape>
+test-reports.xml
+									</code></pre>
+								</ul>
+							<li>Save y luego Build Now</li>
+							<li>Navegar en "Test Result"</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Cambios</h3>
+						Revisar los "Cambios" en un build (o en el proyecto completo) nos permite saber que commits pueden haber provocado un fail o cuales agregan valor en el nuevo build
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+### Agregar el estado del proyecto a README.md
+* En jenkins, en el proyecto que configuramos (toDoDemo_____)
+* Embeddable Build Status (dentro de la vista del proyecto , no dentro de uno de sus builds)
+  * Markdown (with view)
+	  * Copiar el texto de unprotected. Ejemplo:
+```markdown
+[![Build Status](http://192.168.10.115:8080/buildStatus/icon?job=talkaDemoSails)](http://192.168.10.115:8080/job/talkaDemoSails)
+```
+* Agregarlo en el archivo README.MD del proyecto (cerca del título o la descripción)
+* Subir los cambios a GIT y observar como se visualiza en la página del repositorio.
+						</script>
+					</section>
+				</section>
 			</div>
 		</div>
 
