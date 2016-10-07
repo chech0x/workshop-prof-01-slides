@@ -1250,6 +1250,103 @@ test-reports.xml
 					</section>
 
 				</section>
+				<section data-background="#111111">
+					<h2>Agilidad</h2>
+				</section>
+				<section data-transition="zoom-in convex-out" data-background="#AA1A24" >
+					<section data-background="#AA1A24" >
+						<h2>Contenedor Backend Service</h2>
+					</section>
+					<section data-background="#AA1A24" data-markdown>
+						<script type="text/template">
+### Contenedor MongoDB <img data-src="images/mongodb-logo.png" alt="MongoDB Logo" class="noborder" style="position: fixed;right: -3.5em;top: -0.5em;height: 3em;"/>
+#### Creamos un volumen
+No nos sirve un volumen mapeado al Host Windows porque el sistema de archivos es incompatible.
+1. Creamos un volumen dentro de la docker-machine (vm linux).
+2. Levantamos un container con las variables de entorno para personalizar la base de datos.
+3. Revisamos los logs para monitorear que el inicio haya sido correcto.
+```bash
+docker volume create --name data-mongo
+docker run -d -p 27017:27017 -p 28017:28017 \
+ -e MONGODB_USER="kvzdemo" \
+ -e MONGODB_DATABASE="demo" \
+ -e MONGODB_PASS="kvzdemo" \
+ -v data-mongo:/data/db --name mongodb tutum/mongodb
+docker logs mongodb
+```
+4. Creamos una conexión en MongoClient y probamos que pueda conectar. **¿Qué ip usamos?**
+						</script>
+					</section>
+					<section data-background="#AA1A24" data-markdown>
+						<script type="text/template">
+### Modificar Proyecto Sails
+* Agregámos la dependencia de sail-mongo <small>Esto instala la dependencia y lo agrega a package.json</small>
+```bash
+npm install --save sails-mongo
+```
+* Agregamos la configuración de conexión con referencias a variables de ambient en **config/connections.js**
+```json
+mongodbStorage : {
+	adapter: 'sails-mongo',
+	host: process.env.MONGODB_HOST,
+	port: process.env.MONGODB_PORT,
+	user: process.env.MONGODB_USER,
+	password: process.env.MONGODB_PASS,
+	database: process.env.MONGODB_DB
+}
+```
+
+						</script>
+					</section>
+					<section data-background="#AA1A24" data-markdown>
+						<script type="text/template">
+### Modificar Proyecto Sails
+* Agregamos las referencias a la conexión tanto en **config/env/development.js** como en **config/env/production.js**
+```json
+module.exports = {
+		models: {
+		 connection: 'mongodbStorage'
+		}
+}
+```
+* En **scripts/common.cmd** agregamos el link al contenedor de mongodb y las variables de conexión.
+```bash
+docker run -ti --privileged --rm -p 1337:1337  ^
+ -e DISPLAY=%DOCKER_HOST_IP%:%DISPLAY% ^
+ -e LIBGL_DEBUG=verbose -e "TERM=linux" --name %CONTAINERNAME% ^
+ -e MONGODB_HOST=mongodb  ^
+ -e MONGODB_PORT=27017 ^
+ -e MONGODB_USER=kvzdemo ^
+ -e MONGODB_PASS=kvzdemo ^
+ -e MONGODB_DB=demo	  ^
+ -v /c/Users/%USERNAME%/developer/.atom:/home/developer/.atom ^
+ -v /c/Users/%USERNAME%/developer/workdir:/home/developer/workdir --link mongodb:mongodb %DOCKER_IMAGE%
+```
+* Bajamos el contenedor y lo iniciamos con **scripts/common.cmd**
+						</script>
+					</section>
+					<section data-background="#AA1A24" data-markdown>
+						<script type="text/template">
+## Aplicaciones de 12 Factores
+[The Twelve-Factor App](https://12factor.net/es/)
+### Configuraciones
+Guardar las configuraciones en el entorno
+### Concurrencia
+Escalar mediante el modelo de procesos (talka,docker-compose,heroku)
+### Backing services
+Tratar los “backing services” como recursos conectables.
+Lo que hicimos de que el **contenedor sails-dev** pudiera ver por red al **contenedor mongodb**. A medida que necesitamos servicios de backend los levantamos como procesos (contenedores) aislados, pero conectados entre sí.
+						</script>
+					</section>
+					<section data-background="#AA1A24" data-markdown>
+						<script type="text/template">
+## Aplicaciones de 12 Factores
+### Paridad en desarrollo y producción.
+Mantener desarrollo, preproducción y producción tan parecidos como sea posible.
+Esto nos permite hacer releases más frecuentes y menos dolorosos. **Aumentando la calidad de la entrega final**. 
+						</script>
+					</section>
+				</section>
 			</div>
 		</div>
 
