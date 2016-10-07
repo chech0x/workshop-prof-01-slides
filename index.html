@@ -98,7 +98,8 @@
     ```bash
     rm -f /var/log/xwin/XWin.0* \
      && export CYGWIN=server \
-     && /usr/bin/XWin :0 -multiwindow -listen tcp -ac
+     && /usr/bin/XWin :0 -multiwindow \
+		  -listen tcp -ac -clipboard
     ```
 * Esto levantará un servidor X en la $IP:0.0. Ejemplo: 192.168.10.18:0.0
 
@@ -1149,8 +1150,11 @@ test-reports.xml
 
 								</div>
 								<div class="righthalf">
+									<div style="width:100%;text-align: center;">
+										<img data-src="images/blender.jpg" alt="complejo vs simple" class="noborder" style="height:6em;"/>
+									</div>
 									<ul>
-									<img data-src="images/blender.jpg" alt="complejo vs simple" class="noborder" style="height:6em;"/>
+
 									<li>Volvemos complejo el proyecto <strong>cuando nos queremos adelantar a todo</strong></li>
 										<ul>
 											<li><strong>Proyectos Pulpos</strong></li>
@@ -1163,6 +1167,88 @@ test-reports.xml
 							</div>
 
 					</section>
+					<section data-background="#ffffff">
+
+							<h3 style="color:#41B3D5">
+								Y.A.G.N.I.
+							</h3>
+							<strong style="color:#41B3D5">You Aren't Gonna Need It </strong>
+							<div style="display:flex;color:#41B3D5">
+
+								<div class="lefthalf">
+									<ul>
+										<li>Matenga despejado el sistema de cosas extras que <strong>espera</strong> serán usadas en el <strong>futuro</strong>.</li>
+										<li>Sólo el 10% de las cosas extras son usadas alguna vez.</li>
+										<li>Las funcionalidades <strong>extras</strong> siempre nos <strong>retrasarán</strong> y <strong>malgastarán</strong> nuestros <strong>recursos</strong>.</li>
+										<li>Mantener el código listo para posibles cambios se hace a través de un <strong>diseño sencillo</strong></li>
+										<li><strong>Evita adivinar</strong> futuros requerimientos y flexibilidad extra</li>
+									</ul>
+
+								</div>
+								<div class="righthalf">
+									<ul>
+										<div style="width:100%;text-align: center;">
+											<img data-src="images/yagni.png" alt="complejo vs simple" class="noborder" style="height:6em;"/>
+										</div>
+										<li>Concéntrate en los compromisos para hoy.</li>
+										<li>YAGNI es una forma de referirse a Simple Design</li>
+
+									</ul>
+
+								</div>
+
+							</div>
+
+					</section>
+					<section data-background="#ffffff">
+
+							<h3 style="color:#41B3D5">
+								DRY
+							</h3>
+							<strong style="color:#41B3D5">Don't Repeat Yourself</strong>
+							<ul style="color:#41B3D5">
+								<li>También conocido como SPOT (Single Point of Truth)</li>
+								<li>"Todo debería ser dicho una y solo una sola vez" (Kent Beck)</li>
+								<li>El ejercicio de eliminar los duplicados es una poderosa forma de llegar a buenos diseños</li>
+							</ul>
+					</section>
+
+
+
+					<section data-background="#ffffff">
+
+							<h3 style="color:#41B3D5">
+								Simple Design
+							</h3>
+							<strong style="color:#41B3D5">Según Kent Beck</strong>
+							<ul style="color:#41B3D5">
+								<li>El <strong>código</strong> operacional y los <strong>tests</strong> transmiten completamente las <strong>intenciones del programador</strong> sobre tal código.</li>
+								<li>No existe código duplicado.</li>
+								<li>El sistema usa el menor número de clases.</li>
+								<li>Es sistema usa el menor número de métodos.</li>
+							</ul>
+							<img data-src="images/simpleDesign.png" alt="Diagrama de Martin Fawler sobre las reglas de Diseño Simple de Kent Beck" class="noborder" style="height:8em;"/>
+							<a href="http://martinfowler.com/bliki/BeckDesignRules.html" target="_extBeckDesign"><small>Diagrama de Martin Fawler sobre las reglas de Diseño Simple de Kent Beck</small></a>
+					</section>
+					<section data-background="#ffffff">
+
+							<h3 style="color:#41B3D5">
+								Legibilidad y Comentarios
+							</h3>
+							<strong style="color:#41B3D5">El código fuente es para humanos<small style="vertical-align: middle;">... Los comentarios también.</small></strong>
+							<ul style="color:#41B3D5">
+								<li>"La documentación es el código" <strong>¿Lo hago con esa intención?</strong></li><small>Por esto se controlan las versiones del código fuente y no de los compilados</small>
+								<li>Cuando refactorizamos (<strong>extract method</strong>) el objetivo es <strong>simplificar la lectura</strong> del código fuente</li>
+								<li><strong>No comente código para deshabilitarlo</strong>, si está en GIT, puede/debe eliminarlo libremente</li>
+								<li>Los comentarios van sobre métodos/funciones y sobre instrucciones específicas</li>
+								<li>Nombres de variables y funciones/metodos descriptivos, no estamos en COBOL</li>
+								<li>Mientras <strong>más descriptivo el código</strong>, más fácil poder tomarse <strong>vacaciones</strong></li>
+								<li>Descripciones deben ser <strong>funcionales</strong>, no sintácticas</li><small><del>//Se asigna 0 a la variable x</del></small>
+							</ul>
+							<img data-src="" alt="" class="noborder" style="height:8em;"/>
+							<a href="" target="_extBeckDesign"><small></small></a>
+					</section>
+
 				</section>
 			</div>
 		</div>
