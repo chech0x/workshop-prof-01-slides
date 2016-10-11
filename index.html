@@ -515,7 +515,7 @@ t.eclipse
 				</section>
 
 				<section data-transition="concave-in"  data-transition-speed="slow" data-background="#578F27">
-					<section>
+					<section data-background="#578F27">
 						<h2>Corriendo el Proyecto por Primera Vez</h2>
 	<img data-src="images/running_transparent.png" alt="Ejecutando el Proyecto en Sails" class="noborder"/>
 					</section>
@@ -1249,7 +1249,7 @@ test-reports.xml
 					</section>
 
 				</section>
-				<section data-background="#111111">
+				<section data-background="#578F27">
 					<h2>Agilidad</h2>
 				</section>
 				<section data-transition="zoom-in convex-out" data-background="#AA1A24" >
@@ -1364,6 +1364,108 @@ Esto nos permite hacer releases más frecuentes y menos dolorosos. **Aumentando 
 								</div>
 							</div>
 						</section>
+				</section>
+				<section data-transition="concave-in"  data-transition-speed="slow" data-background="#111111">
+					<section data-background="#111111">
+						<img data-src="images/talka_logo.png" alt="Ejecutando el Proyecto en Sails" style="height:10em;" class="noborder"/>
+						<h2>Deploy en Talka</h2></br>
+
+					</section>
+					<section  data-background="#111111">
+						<h3>Talka</h3>
+						<div style="display:flex">
+							<div class="lefthalf" style="width:40%;">
+								<ul >
+									<li>Es un ecosistema de tipo <a href="https://serverless.com/" alt="Concepto Serverless Acuñado por Amazon" target="_ext_serverless">Server-Less</a>.</li>
+									<li style="text-align: left;">Una filosofía de desarrollo <strong>orientado a contendores</strong>.<small>Applicaciones Autocontenidas</small></li>
+									<li>Mas <strong>Dev</strong> que <strong>Ops</strong>.</li>
+									<li style="text-align: left;"><strong>Escalamiento Automatizado</strong> de aplicaciones.</li><br/>
+								</ul>
+							</div>
+							<div class="righthalf" style="width:60%">
+								<img data-src="images/talka_descripcion.png" alt="Qué es Talka" style="width:100%" class="noborder"/>
+							</div>
+						</div>
+					</section>
+					<section data-markdown data-background="#111111">
+<script type="text/template">
+### Buildpacks
+Basado en la estructura de despliegue de [Heroku Buildpacks](https://devcenter.heroku.com/articles/buildpacks)
+Una forma de definir tipos de proyectos de cierta naturaleza, arquitectura y tecnología.
+Existen buildpacks para los principales lenguajes y tecnologías.
+### Procfile
+[Procfile](https://devcenter.heroku.com/articles/procfile) es un mecanismo para declarar aplicaciones y comandos dinámicamente (custom).
+Se define un archivo **Procfile** con el tipo de proceso.
+```bash
+web: npm start
+```
+
+
+</script>
+					</section>
+					<section data-markdown data-background="#111111">
+<script type="text/template">
+### Flujo de Despliegue
+* Buildpacks o procfiles :
+  * git clone de un buildpack o crear el procfile que describa la naturaleza del proyecto
+  * modificaciones propias del desarrollo
+  * talka create <small style="vertical-align: middle;">(se crea una app en talka y su repositorio git interno)</small>
+  * Para deployar usamos el fujo básico de git:
+    * git add
+    * git commit
+    * git push deis master <small style="vertical-align: middle;">(sube cambios a git interno de talka y gatilla deploy )</small>
+* Contendores
+	* talka create &lt;appName&gt; --no-remote
+	* talka pull &lt;imagen&gt;:version -a &lt;appName&gt;
+
+
+</script>
+					</section>
+					<section data-markdown data-background="#111111">
+<script type="text/template">
+### Registrar un Usuario
+```bash
+talka register deis.talka.kvz.local
+```
+<small>*deis.talka.kvz.local* es la URL del **API** web del **controlador** de la plataforma</small>
+### Claves SSH
+Se debe poseer un par de llaves públicas y privadas asociadas a la cuenta talka. Esto para poder conectarse al **repositorio git de talka** y así poder hacer push.
+Asumiendo que las llaves se encuentran en ~/.ssh/mykey y ~/.ssh/mykey.pub
+```bash
+talka keys:add ~/.ssh/mykey.pub
+ssh-add ~/.ssh/myKey
+```
+
+
+
+</script>
+					</section>
+					<section data-markdown data-background="#111111">
+<script type="text/template">
+<h3 style="margin-top:-1em">Procfile Sails</h3>
+Creamos un archivo de tipo Procfile en la raiz del proyecto sails:
+```bash
+web: npm start
+```
+Modificamos el script de start en package.json
+```bash
+"scripts": {
+	"start": "sails lift",
+	"test": "node ./node_modules/mocha/bin/mocha -R xunit --reporter-options output=test-reports.xml test/bootstrap.test.js test/integration/**/*.test.js"
+},
+```
+### Crear el proyecto talka
+talka create &lt;appName&gt;
+### Deployar
+```bash
+git add -A
+git commit -m "Se agrega configuración necesaria para deployar en talka"
+git push deis master
+```
+
+
+</script>
+					</section>
 				</section>
 			</div>
 		</div>
