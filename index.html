@@ -1319,7 +1319,7 @@ docker run -ti --privileged --rm -p 1337:1337  ^
  -e LIBGL_DEBUG=verbose -e "TERM=linux" --name %CONTAINERNAME% ^
  -v /c/Users/%USERNAME%/developer/.ssh:/home/developer/.ssh ^
  -v /c/Users/%USERNAME%/developer/.atom:/home/developer/.atom ^
- -v /c/Users/%USERNAME%/developer/workdir:/home/developer/workdir --link mongodb:mongodb %DOCKER_IMAGE%
+ -v /c/Users/%USERNAME%/developer/workdir:/home/developer/workdir --link mongodb:mongodb %DOCKER_IMAGE%Sa
 ```
 * Bajamos el contenedor y lo iniciamos con **scripts/common.cmd**
 						</script>
@@ -1465,6 +1465,49 @@ git push deis master
 
 
 </script>
+					</section>
+				</section>
+				<section  data-transition="convex-in" style="color:black;" data-background="#FFFFFF">
+					<section data-background="#FFFFFF">
+						<h2 style="color:#41B3D5">Herramientas de Gestión</h2>
+					</section>
+					<section data-background="#FFFFFF">
+						<img data-src="images/wekan-logo.png" class="noborder" alt="Wekan" style="height:3em"/><br/>
+						<a href="http://wekan.talka.kvz.local/" target="_ext_wekan">wekan.talka.kvz.local/</a><br/>
+						<img data-src="images/wekan-tablero.png" class="noborder" alt="Wekan" style="height:20em"/>
+					</section>
+					<section data-background="#FFFFFF">
+						<img data-src="images/wekan-logo.png" class="noborder" alt="Wekan" style="height:3em"/><br/>
+						<ul style="color:#41B3D5">
+<li><strong>Administración Visual</strong> de Features y Tareas (<strong>micro y macro</strong>)</li>
+<li>Permite Diseñar un flujo adhoc a cada proyecto.</li>
+<ul><li>	Ejemplo: [BackLog, Para Hacer, Haciendo, Pruebas, Terminado]</li></ul>
+<li>Nos permite <strong>compartir información</strong>, <strong>asignarle</strong> a alguien específico. </li>
+<li>Nos da una <strong>panorámica instantánea</strong> del estado del proyecto.</li>
+<li>Lo usaremos como una <strong>herramienta de colaboración</strong> entre integrantes del equipo de desarrollo.</li>
+						</ul>
+					</section>
+					<section data-background="#FFFFFF">
+						<h3 style="color:#41B3D5">Gitlab Issues</h3>
+						<img data-src="images/gitlab-logo.png" class="noborder" alt="Gitlab" style="height:3em"/><br/>
+						<a href="http://git.kvz.local/" target="_ext_gitlab">git.kvz.local/</a><br/>
+						<img data-src="images/gitlab-issues.png" class="noborder" alt="Gitlab Issues" style="height:20em"/>
+					</section>
+					<section data-background="#FFFFFF">
+						<h3 style="color:#41B3D5">Gitlab Issues</h3>
+						<ul style="color:#41B3D5">
+<li>Propio de un proyecto en Gitlab.</li>
+<li>Surge el rol de usuario <strong>owner</strong> (que aprueba cambios sobre un repositorio)</li>
+<li>Surge el rol de usuario <strong>master</strong> (que puede crear repositorios en un equipo)</li>
+<li>Nos permite gestionar issues propios del código, <strong>proponer merge</strong> de una rama al master, definir hitos (<strong>milestones</strong>) de releases.</li>
+<li>Lo usaremos como una <strong>herramienta de control del ciclo de vida</strong> de las aplicaciones a nivel de proyectos. </li>
+						</ul>
+					</section>
+					<section data-background="#FFFFFF">
+						<h3 style="color:#41B3D5">Mantis</h3>
+						<img data-src="images/mantis_logo.png" class="noborder" alt="Mantis" style="height:3em"/><br/>
+						<a href="http://bugtracker.kvz.local/" target="_ext_mantis">bugtracker.kvz.local</a><br/>
+						<img data-src="images/mantis-desktop" class="noborder" alt="Mantis Bugtracker" style="height:20em"/>
 					</section>
 				</section>
 			</div>
