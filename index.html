@@ -291,11 +291,10 @@ Sino deberemos ejecutar *.\scripts\common.cmd* comentando la última línea y de
  -e DISPLAY=%DOCKER_HOST_IP%:%DISPLAY% ^
  -e LIBGL_DEBUG=verbose -e "TERM=linux" --name %CONTAINERNAME% %DOCKER_IMAGE%
 
- REM docker run -ti --privileged --rm -p 1337:1337 --net=host ^
- REM  -e DISPLAY=%DOCKER_HOST_IP%:%DISPLAY% ^
- REM  -e LIBGL_DEBUG=verbose -e "TERM=linux" --name %CONTAINERNAME% ^
- REM  -v /c/Users/%USERNAME%/developer/.atom:/home/developer/.atom ^
- REM  -v /c/Users/%USERNAME%/developer/workdir:/home/developer/workdir  %DOCKER_IMAGE%
+REM docker run -ti --privileged --rm -p 1337:1337  ^
+REM -e MONGODB_HOST=mongodb  ^
+REM -e MONGODB_PORT=27017 ^
+...
  ```
  <small>(El símbolo **^** se utiliza en Windows para especificar que un comando continúa en la línea siguiente)</small>
 						</script>
@@ -1311,13 +1310,14 @@ module.exports = {
 * En **scripts/common.cmd** agregamos el link al contenedor de mongodb y las variables de conexión.
 ```bash
 docker run -ti --privileged --rm -p 1337:1337  ^
+-e MONGODB_HOST=mongodb  ^
+-e MONGODB_PORT=27017 ^
+-e MONGODB_USER=kvzdemo ^
+-e MONGODB_PASS=kvzdemo ^
+-e MONGODB_DB=demo	  ^
  -e DISPLAY=%DOCKER_HOST_IP%:%DISPLAY% ^
  -e LIBGL_DEBUG=verbose -e "TERM=linux" --name %CONTAINERNAME% ^
- -e MONGODB_HOST=mongodb  ^
- -e MONGODB_PORT=27017 ^
- -e MONGODB_USER=kvzdemo ^
- -e MONGODB_PASS=kvzdemo ^
- -e MONGODB_DB=demo	  ^
+ -v /c/Users/%USERNAME%/developer/.ssh:/home/developer/.ssh ^
  -v /c/Users/%USERNAME%/developer/.atom:/home/developer/.atom ^
  -v /c/Users/%USERNAME%/developer/workdir:/home/developer/workdir --link mongodb:mongodb %DOCKER_IMAGE%
 ```
