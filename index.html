@@ -279,21 +279,23 @@ PS ...> docker-machine.exe  restart  && eval $("docker-machine.exe" env)
 					</section>
 					<section data-markdown data-background="#DB7825">
 						<script type="text/template">
-### Preparación de home con volumen
-La primera vez (si queremos trabajar con un volumen nuestra carpeta /home/developer) debemos ejecutar la instrucción
+<h3 style="margin-top:-1em;">Preparación de home con volumen</h3>
+La primera vez que levantamos un contenedor con esta imagen necesitamos tener creada la carpeta:
+/c/Users/**%USERNAME%**/developer/ , en este directorio montaremos tres volúmenes: **.ssh**, **workdir**, **.atom**.
+
+La última instrucción del archivo *.\scripts\common.cmd* mantiene las referencias de los volumenes. Si no queremos persistencia comentamos la última instrucción y descomentamos la penúltima.
+
 ```bash
-/opt/scripts/init.sh
-```
-para que construya la estructura de directorios y copie los scripts de ayuda.
-Sino deberemos ejecutar *.\scripts\common.cmd* comentando la última línea y descomentando la penúltima:
- ```bash
  docker run -ti --privileged --rm -p 1337:1337 --net=host ^
  -e DISPLAY=%DOCKER_HOST_IP%:%DISPLAY% ^
  -e LIBGL_DEBUG=verbose -e "TERM=linux" --name %CONTAINERNAME% %DOCKER_IMAGE%
 
 REM docker run -ti --privileged --rm -p 1337:1337  ^
-REM -e MONGODB_HOST=mongodb  ^
-REM -e MONGODB_PORT=27017 ^
+REM  -e DISPLAY=%DOCKER_HOST_IP%:%DISPLAY% ^
+REM  -e LIBGL_DEBUG=verbose -e "TERM=linux" --name %CONTAINERNAME% ^
+REM  -v /c/Users/%USERNAME%/developer/.ssh:/home/developer/.ssh ^
+REM  -v /c/Users/%USERNAME%/developer/.atom:/home/developer/.atom ^
+REM  -v /c/Users/%USERNAME%/developer/workdir:/home/developer/workdir %DOCKER_IMAGE%
 ...
  ```
  <small>(El símbolo **^** se utiliza en Windows para especificar que un comando continúa en la línea siguiente)</small>
@@ -306,6 +308,11 @@ REM -e MONGODB_PORT=27017 ^
 t.atom
 ```
 ### Levantar eclipse dentro del contenedor
+
+```bash
+t.eclipse
+```
+### Levantar chrome dentro del contenedor
 
 ```bash
 t.eclipse
@@ -522,7 +529,7 @@ t.eclipse
 <script type="text/template">
 ### Mapeo de Puertos
 #### Docker
-* Debemos indicar a docker que puertos mapear, en el caso de nuestro script **scripts/common.cmd** lo mapeamos con **p 1337:1337**
+* Debemos indicar a docker que puertos mapear, en el caso de nuestro script **scripts/common.cmd** lo mapeamos con **-p 1337:1337**
  ```bash
  docker run -ti --privileged --rm -p 1337:1337 -e DISPLAY=%DOCKER_HOST_IP%:%DISPLAY% ...
  ```
